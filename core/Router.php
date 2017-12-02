@@ -34,18 +34,19 @@ class Router{
 				}
 			}
 		}
-		
+
 		$params = explode('/',$url);
 		if(in_array($params[0],array_keys(self::$prefixes))){
 			$request->prefix = self::$prefixes[$params[0]];
 			array_shift($params); 
 		}
+		
 		$request->controller = $params[0];
 		$request->action = isset($params[1]) ? $params[1] : 'index';
 		foreach(self::$prefixes as $k=>$v){
 			if(strpos($request->action,$v.'_') === 0){
 				$request->prefix = $v;
-				$request->action = str_replace($v.'_','',$request->action);  
+				$request->action = str_replace($v.'_','',$request->action); 
 			}
 		}
 		$request->params = array_slice($params,2);

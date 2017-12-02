@@ -19,7 +19,7 @@ class PersonnelsController extends Controller{
 		}
 		if($this->Session->isLogged()){
 			if($this->Session->user('ROLE') == '1'){
-				$this->redirect('vacataires');
+				$this->redirect('dashboard');
 			}else{
 				$this->redirect('/');
 			}
@@ -34,5 +34,7 @@ class PersonnelsController extends Controller{
 		$this->Session->setFlash('Vous ête mainenant déconnecté'); 
 		$this->redirect('/'); 
 	}
+
+	
 
 }
