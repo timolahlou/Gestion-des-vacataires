@@ -36,10 +36,9 @@
     <td><?php echo $p->EMAIL ?></td>
     <td><?php echo $p->TEL ?></td>
     <td><?php if ($p->ROLE == 1) { echo "Vacataire"; }elseif($p->ROLE == 2){ echo "Responsable Administratif"; }elseif($p->ROLE == 3){ echo "Responsable Financier"; }   ?></td>
- <!---   <td><p data-placement="top" data-toggle="tooltip" title="modifier"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> 
+   <td><p data-placement="top" data-toggle="tooltip" title="modifier"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+   <!---  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> 
   -->
- <td> <a href="<?php echo Router::url('personnels/edit/'.$p->ID); ?>"><span class="glyphicon glyphicon-pencil"></span></a> </td>
 
   <td>
     <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('personnels/delete/'.$p->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
@@ -130,9 +129,9 @@
                 <div class="form-group">
                 <label for="sel1">Select list:</label>
                 <select name="ROLE" class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
+                  <option>Responsable administratif</option>
+                  <option>Vacataire</option>
+                  <option>Responsable financier</option>
                 </select>
                 </div>
 				      </div>

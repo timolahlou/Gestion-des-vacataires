@@ -52,7 +52,15 @@ class PersonnelsController extends Controller{
 
 	function ajouter($id = null)
 	{
-		$d['id'] = $id; 
+		$d['id'] = $id;
+		$role = $this->request->data->ROLE;
+		if ($role == "Responsable administratif") {
+			$this->request->data->ROLE = 1;
+		}elseif ($role == "Vacataire") {
+			$this->request->data->ROLE = 2;
+		}elseif ($role == "Responsable financier") {
+			$this->request->data->ROLE = 3;
+		}
 		if($this->request->data){
 				$this->request->data->MDP = sha1($this->request->data->MDP);
 				$this->loadModel('Personnel');
