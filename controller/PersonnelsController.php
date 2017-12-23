@@ -46,8 +46,6 @@ class PersonnelsController extends Controller{
 				$d['p'] = "Responsable financier";
 			}
 		$this->set($d);
-
-		
 	}
 
 	function ajouter($id = null)

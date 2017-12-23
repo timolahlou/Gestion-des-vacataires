@@ -28,25 +28,17 @@
            		</thead>
 
 					    <tbody>
+					<?php foreach ($formations as $f ) { ?>	
+
 					    <tr>
+					    <td><?php  echo $f->LIBELLEFORMATION;   ?></td>
+					    <td><?php  echo $f->nomD;   ?></td>
 
-					    <td>Mohsin</td>
-					    <td>Irshad</td>
-
-					    <td>+923335586757</td>
+					    <td><?php  echo $f->nomS;   ?></td>
 					    <td><p style="text-align:center;" data-placement="top" data-toggle="tooltip" title="Editer"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 					    <td><p style="text-align:center;" data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 					    </tr>
-
-					 <tr>
-
-					    <td>Mohsin</td>
-					    <td>Irshad</td>
-					    <td>+923335586757</td>
-					    <td><p style="text-align:center;" data-placement="top" data-toggle="tooltip" title="Editer"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-					    <td><p style="text-align:center;" data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-					    </tr>
-
+					<?php  } ?>
 					    </tbody>
 
 </table>

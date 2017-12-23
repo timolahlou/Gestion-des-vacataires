@@ -18,8 +18,13 @@ class FormationsController extends Controller{
 			}elseif ($this->Session->user('ROLE') == '3') {
 				$d['p'] = "Responsable financier";
 			}
+			
+			$this->loadModel('Formation');
+			$d['formations'] = $this->Formation->find(array(
+			'fields'     => ' LIBELLEFORMATION,Personnel.NOM as nomD,Personnel.PRENOM as nomS',
+			'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_DIRIGE')
+		));
 		$this->set($d);
-
 	}
 
 
