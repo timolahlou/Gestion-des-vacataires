@@ -8,7 +8,6 @@ class CoursController extends Controller{
 		{
 			$this->redirect('personnels/login');
 		}
-
 		$this->loadModel('Personnel');
 
 		$condition = array('ROLE' => 1); 
