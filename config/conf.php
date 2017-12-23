@@ -7,7 +7,7 @@ class Conf{
 
 		'default' => array(
 			'host'		=> 'localhost',
-			'database'	=> 'gestionvacataire',
+			'database'	=> 'gestionvacataires',
 			'login'		=> 'root',
 			'password'	=> ''
 		)

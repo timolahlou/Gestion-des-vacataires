@@ -39,10 +39,10 @@
  <!---   <td><p data-placement="top" data-toggle="tooltip" title="modifier"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> 
   -->
- <td> <a href="<?php echo Router::url('personnels/edit/'.$p->id); ?>"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+ <td> <a href="<?php echo Router::url('personnels/edit/'.$p->ID); ?>"><span class="glyphicon glyphicon-pencil"></span></a> </td>
 
   <td>
-    <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('personnels/delete/'.$p->id); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+    <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('personnels/delete/'.$p->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
   </td>
     </tr>
      <?php     }   ?>

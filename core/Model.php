@@ -6,7 +6,7 @@ class Model{
 	public $conf = 'default';
 	public $table = false; 
 	public $db; 
-	public $primaryKey = 'id'; 
+	public $primaryKey = 'ID'; 
 	public $id; 
 	public $errors = array();
 	public $form; 
