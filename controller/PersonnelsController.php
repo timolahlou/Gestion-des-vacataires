@@ -21,7 +21,7 @@ class PersonnelsController extends Controller{
 			if($this->Session->user('ROLE') == '1'){
 				$this->redirect('listePersonnes');
 			}elseif ($this->Session->user('ROLE') == '2') {
-				$this->redirect('listePersonnes');
+				$this->redirect('listeFormations');
 			}elseif ($this->Session->user('ROLE') == '3') {
 				$this->redirect('listePersonnes');
 			}else{
@@ -69,6 +69,13 @@ class PersonnelsController extends Controller{
 		$this->set($d);
 	}
 
+	function delete($id)
+	{
+		$this->loadModel('Personnel');
+		$this->Personnel->delete($id);
+		$this->Session->setFlash('La Personne a bien été supprimée'); 
+		$this->redirect('listePersonnes'); 
+	}
 	/**
 	* Logout
 	**/

@@ -175,6 +175,7 @@ class Model{
 	**/	
 	public function delete($id){
 		$sql = "DELETE FROM {$this->table} WHERE {$this->primaryKey} = $id";
+		var_dump($sql);
 		$this->db->query($sql); 
 	}
 
