@@ -35,7 +35,7 @@
     <td><?php echo $p->PRENOM ?></td>
     <td><?php echo $p->EMAIL ?></td>
     <td><?php echo $p->TEL ?></td>
-    <td><?php if ($p->ROLE == 1) { echo "Vacataire"; }elseif($p->ROLE == 2){ echo "Responsable Administratif"; }elseif($p->ROLE == 3){ echo "Responsable Financier"; }   ?></td>
+    <td><?php if ($p->ROLE == 1) { echo "Responsable Administratif"; }elseif($p->ROLE == 2){ echo "Vacataire"; }elseif($p->ROLE == 3){ echo "Responsable Financier"; }   ?></td>
    <td><p data-placement="top" data-toggle="tooltip" title="modifier"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
    <!---  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> 
   -->
