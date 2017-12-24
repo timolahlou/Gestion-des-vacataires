@@ -1,43 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Gestion de cours</title>
-<!-- Bootstrap -->
-<meta charset="utf-8">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$("#mytable #checkall").click(function () {
-						if ($("#mytable #checkall").is(':checked')) {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", true);
-								});
-
-						} else {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", false);
-								});
-						}
-				});
-
-				$("[data-toggle=tooltip]").tooltip();
-			});
-
-
-		</script>
-
-</head>
-
-<body>
-
+<?php  include "../view/layout/head.php";  ?>
 
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">
@@ -58,19 +19,27 @@
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Libelle cours</th>
                     <th>Type de cours</th>
+                    <th>Enseignat</th>
+                    <th>état</th>
                       <th>Modifier</th>
                        <th>Supprimer</th>
                    </thead>
     <tbody>
-
+    <?php  foreach ($cours as $c) {  ?>
     <tr>
     <td><input type="checkbox" class="checkthis" /></td>
-    <td>static test</td>
-    <td>static test</td>
+    <td><?php echo $c->LIBELLE;  ?></td>
+    <td><?php echo $c->TYPE;  ?></td>
+    <td><?php echo $c->Ens;  ?></td>
+    <td><?php if ($c->ID_VALIDE_COURS == 1) { echo "Validé"; }else{ echo "non validé"; } ?></td>
     <td><button class="btn btn-primary btn-xs" data-title="edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><button class="btn btn-danger btn-xs" data-title="delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-
+   <!-- <td><button class="btn btn-danger btn-xs" data-title="delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>  -->
+      <td>
+              <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('cours/delete/'.$c->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+            </td>
+              </tr>
+          <?php  } ?>
     </tbody>
 
 </table>

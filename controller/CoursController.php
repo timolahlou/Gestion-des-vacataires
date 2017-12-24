@@ -3,32 +3,32 @@ class CoursController extends Controller{
 	
 
 
-	function dashboard(){
+	function index(){
 		if(!$this->Session->user('ROLE'))
 		{
 			$this->redirect('personnels/login');
 		}
-		$this->loadModel('Personnel');
+		$this->loadModel('Cour');
 
-		$condition = array('ROLE' => 1); 
-		$d['personnels'] = $this->Personnel->findFirst(array(
-			'conditions' => $condition
-		));
+		$d['cours'] = $this->Cour->find(array(
+			'fields'     => ' Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens',
+			'join'       => array('Personnels as Personnel'=>'Personnel.id=Cour.ID_VALIDE_COURS')));
+		if($this->Session->user('ROLE') == '1'){
+				$d['p'] = "Responsable administratif";
+			}elseif ($this->Session->user('ROLE') == '2') {
+				$d['p'] = "Vacataire";
+			}elseif ($this->Session->user('ROLE') == '3') {
+				$d['p'] = "Responsable financier";
+			}
 		$this->set($d);
 	}
 
-	function listeCours(){
-		if(!$this->Session->user('ROLE'))
-		{
-			$this->redirect('personnels/login');
-		}
-		$this->loadModel('Personnel');
-
-		$condition = array('ROLE' => 1); 
-		$d['personnels'] = $this->Personnel->findFirst(array(
-			'conditions' => $condition
-		));
-		$this->set($d);
+	function delete($id)
+	{
+		$this->loadModel('Cour');
+		$this->Cour->delete($id);
+		$this->Session->setFlash('Le Cours a bien été supprimé'); 
+		$this->redirect('listeCours'); 
 	}
 
 
