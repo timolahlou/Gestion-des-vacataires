@@ -21,9 +21,31 @@ class FormationsController extends Controller{
 			
 			$this->loadModel('Formation');
 			$d['formations'] = $this->Formation->find(array(
-			'fields'     => ' LIBELLEFORMATION,Personnel.NOM as nomD,Personnel.PRENOM as nomS',
+			'fields'     => ' LIBELLEFORMATION,Personnel.ID as idD,Personnel.NOM as nomD,Personnel.PRENOM as nomS',
 			'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_DIRIGE')
 		));
+			$d['supervise'] = $this->Formation->find(array(
+			'fields'     => ' Personnel.ID as idS,Personnel.NOM as nomS',
+			'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_SUPERVISE')
+		));
+		$this->set($d);
+	}
+
+	function ajouter($id = null)
+	{
+		var_dump($this->request);
+		if($this->request->data){
+				$this->loadModel('Formation');
+				$this->Formation->save($this->request->data);
+				$this->Session->setFlash('La Formation a bien été ajoutée');
+				$this->request->data->password = ''; 
+				$this->redirect('listeFormations'); 
+		}elseif($id){
+			$this->request->data = $this->Formation->findFirst(array(
+				'conditions' => array('id'=>$id)
+			));
+		}
+		$d['id'] = $id; 
 		$this->set($d);
 	}
 

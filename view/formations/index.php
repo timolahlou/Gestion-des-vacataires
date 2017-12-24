@@ -108,34 +108,38 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-				        <h4 class="modal-title custom_align" id="Heading">Ajouter foramation</h4>
+				        <h4 class="modal-title custom_align" id="Heading">Ajouter une formation</h4>
 				      </div>
+			          
 			          <div class="modal-body">
+			          	<form action="<?php echo Router::url('/formations/ajouter'); ?>" method="post">
 			          <div class="form-group">
-				        <input class="form-control " type="text" placeholder="Nom de formation">
+				        <input class="form-control " type="text" name="LIBELLEFORMATION" placeholder="Nom de formation">
 				        </div>
 
 				        <div class="form-group">
 								<span class="text-left">Chef de formation:
-				        <select class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
-										<option>timo lmkawed</option>
-										<option>akram tchioro</option>
-										<option>nabil lhokoma</option>
-								</select> </span>
+				        <select name="ID_DIRIGE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+									<?php  foreach ($personnels as $p) { ?>
+									<option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
+									<?php   }  ?>
+						</select> </span>
 				        </div>
 
 				        <div class="form-group">
 									<span class="text-left">Responsable de formation:
-									<select class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
-											<option>timo lmkawed</option>
-											<option>akram tchioro</option>
-											<option>nabil lhokoma</option>
+									<select name="ID_SUPERVISE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+									<?php  foreach ($personnels as $p) { ?>
+									<option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
+									<?php   }  ?>
 									</select> </span>
 				        </div>
+				         <div class="modal-footer$ ">
+				        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Ajouter formation</button>
+				     	</div>
+				     	</form>
 				      </div>
-				          <div class="modal-footer ">
-				        <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Ajouter formation</button>
-				      </div>
+				       
 				        </div>
 				    <!-- /.modal-content -->
 				  </div>
