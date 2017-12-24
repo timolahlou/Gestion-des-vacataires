@@ -94,17 +94,34 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-				        <h4 class="modal-title custom_align" id="Heading">Ajouter votre élément</h4>
+				        <h4 class="modal-title custom_align" id="Heading">Ajouter un Cours</h4>
 				      </div>
 			          <div class="modal-body">
 			          <div class="form-group">
-				        <input class="form-control " type="text" placeholder="">
+				        <input name="LIBELLE" class="form-control " type="text" placeholder="Libelle de Cours">
 				        </div>
 
 				        <div class="form-group">
-				        <input class="form-control " type="text" placeholder="">
+				        <input name="TYPE" class="form-control " type="text" placeholder="Type de Cours">
 				        </div>
+                <div class="form-group">
+                  <select name="ID_SUPERVISE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                  <option>--Enseignant--</option>
+                  <?php  foreach ($personnels as $p) { ?>
+                  <option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
+                  <?php   }  ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select name="ID_SUPERVISE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                  <option>--Qui valide--</option>
+                  <?php  foreach ($personnels as $p) { ?>
+                  <option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
+                  <?php   }  ?>
+                  </select>
+                </div>
 				      </div>
+
 				          <div class="modal-footer ">
 				        <button type="button" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
 				      </div>

@@ -8,8 +8,9 @@ class CoursController extends Controller{
 		{
 			$this->redirect('personnels/login');
 		}
+		$this->loadModel('Personnel');
+		$d['personnels'] = $this->Personnel->find();
 		$this->loadModel('Cour');
-
 		$d['cours'] = $this->Cour->find(array(
 			'fields'     => ' Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens',
 			'join'       => array('Personnels as Personnel'=>'Personnel.id=Cour.ID_VALIDE_COURS')));
