@@ -54,7 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Accueil</a></li>
       <li><a href="<?php echo Router::url('listePersonnes'); ?>">Liste des Vacataires</a></li>
-      <li><a href="#">Liste des Cours</a></li>
+      <li><a href="<?php echo Router::url('listeCours'); ?>">Liste des Cours</a></li>
       <li><a href="<?php echo Router::url('listeFormations'); ?>">Liste des Formations</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
