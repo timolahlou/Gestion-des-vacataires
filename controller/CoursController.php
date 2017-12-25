@@ -10,6 +10,8 @@ class CoursController extends Controller{
 		}
 		$this->loadModel('Personnel');
 		$d['personnels'] = $this->Personnel->find();
+		$this->loadModel('Formation');
+			$d['formations'] = $this->Formation->find();
 		$this->loadModel('Cour');
 		$d['cours'] = $this->Cour->find(array(
 			'fields'     => ' Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens',
@@ -21,6 +23,26 @@ class CoursController extends Controller{
 			}elseif ($this->Session->user('ROLE') == '3') {
 				$d['p'] = "Responsable financier";
 			}
+		$this->set($d);
+	}
+
+	function ajouter($id = null)
+	{
+		$d['id'] = $id;
+		var_dump($this->request);
+		die();
+		if($this->request->data){
+				$this->loadModel('Cour');
+				$this->Cour->save($this->request->data);
+				$this->Session->setFlash('Le cours a bien été ajouté');
+				$this->request->data->password = ''; 
+				$this->redirect('listeCours'); 
+		}elseif($id){
+			$this->request->data = $this->Personnel->findFirst(array(
+				'conditions' => array('id'=>$id)
+			));
+		}
+		$d['id'] = $id; 
 		$this->set($d);
 	}
 

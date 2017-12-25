@@ -82,6 +82,25 @@ class PersonnelsController extends Controller{
 		$this->Session->setFlash('La Personne a bien été supprimée'); 
 		$this->redirect('listePersonnes'); 
 	}
+
+	function vacataires()
+	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
+		$this->loadModel('Personnel');
+		$conditions = array('ROLE'=> '2');
+		$d['personnels'] = $this->Personnel->find(array('conditions' => $conditions));
+		if($this->Session->user('ROLE') == '1'){
+				$d['p'] = "Responsable administratif";
+			}elseif ($this->Session->user('ROLE') == '2') {
+				$d['p'] = "Vacataire";
+			}elseif ($this->Session->user('ROLE') == '3') {
+				$d['p'] = "Responsable financier";
+			}
+		$this->set($d);
+	}
 	/**
 	* Logout
 	**/

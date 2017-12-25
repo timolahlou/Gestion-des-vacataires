@@ -97,6 +97,7 @@
 				        <h4 class="modal-title custom_align" id="Heading">Ajouter un Cours</h4>
 				      </div>
 			          <div class="modal-body">
+                  <form action="<?php echo Router::url('/cours/ajouter'); ?>" method="post">
 			          <div class="form-group">
 				        <input name="LIBELLE" class="form-control " type="text" placeholder="Libelle de Cours">
 				        </div>
@@ -105,7 +106,7 @@
 				        <input name="TYPE" class="form-control " type="text" placeholder="Type de Cours">
 				        </div>
                 <div class="form-group">
-                  <select name="ID_SUPERVISE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                  <select name="ID_ENSEIGNE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
                   <option>--Enseignant--</option>
                   <?php  foreach ($personnels as $p) { ?>
                   <option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
@@ -113,18 +114,28 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <select name="ID_SUPERVISE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                  <select name="ID_VALIDE_COURS" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
                   <option>--Qui valide--</option>
                   <?php  foreach ($personnels as $p) { ?>
                   <option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
                   <?php   }  ?>
                   </select>
                 </div>
+                <div class="form-group">
+                  <select name="ID_APPARTIENT" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                  <option>--Formation--</option>
+                  <?php  foreach ($formations as $f) { ?>
+                  <option value="<?php  echo $f->ID; ?>"><?php  echo $f->LIBELLEFORMATION; ?></option>
+                  <?php   }  ?>
+                  </select>
+                </div>
+                <div class="modal-footer ">
+                <button type="submit" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+              </div>
+                </form>
 				      </div>
 
-				          <div class="modal-footer ">
-				        <button type="button" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
-				      </div>
+				          
 				        </div>
 				    <!-- /.modal-content -->
 				  </div>

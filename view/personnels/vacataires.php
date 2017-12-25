@@ -1,43 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Gestion de vacataires</title>
-<!-- Bootstrap -->
-<meta charset="utf-8">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$("#mytable #checkall").click(function () {
-						if ($("#mytable #checkall").is(':checked')) {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", true);
-								});
-
-						} else {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", false);
-								});
-						}
-				});
-
-				$("[data-toggle=tooltip]").tooltip();
-			});
-
-
-		</script>
-
-</head>
-
-<body>
-
+<?php  include "../view/layout/head.php";  ?>
 
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">
@@ -58,22 +19,30 @@
                    <th><input type="checkbox" id="checkall" /></th>
                     <th>Nom</th>
                    <th>Prénom</th>
-					<th>Email</th>
+					         <th>Email</th>
                     <th>Téléphone</th>
+                    <th>Role</th>
                       <th>Modifier</th>
                        <th>Supprimer</th>
                    </thead>
     <tbody>
-
+<?php   foreach ($personnels as $p) {  ?>
     <tr>
     <td><input type="checkbox" class="checkthis" /></td>
-    <td>static test</td>
-    <td>static test</td>
-	<td>static test</td>
-    <td>static test</td>
-    <td><button class="btn btn-primary btn-xs" data-title="edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><button class="btn btn-danger btn-xs" data-title="delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    <td><?php echo $p->NOM ?></td>
+    <td><?php echo $p->PRENOM ?></td>
+    <td><?php echo $p->EMAIL ?></td>
+    <td><?php echo $p->TEL ?></td>
+    <td><?php if ($p->ROLE == 1) { echo "Responsable Administratif"; }elseif($p->ROLE == 2){ echo "Vacataire"; }elseif($p->ROLE == 3){ echo "Responsable Financier"; }   ?></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="modifier"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+   <!---  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> 
+  -->
+
+  <td>
+    <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('personnels/delete/'.$p->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+  </td>
     </tr>
+     <?php     }   ?>
 
     </tbody>
 
