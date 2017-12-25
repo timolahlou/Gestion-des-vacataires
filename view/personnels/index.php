@@ -36,7 +36,7 @@
     <td><?php echo $p->EMAIL ?></td>
     <td><?php echo $p->TEL ?></td>
     <td><?php if ($p->ROLE == 1) { echo "Responsable Administratif"; }elseif($p->ROLE == 2){ echo "Vacataire"; }elseif($p->ROLE == 3){ echo "Responsable Financier"; }   ?></td>
-   <td><p data-placement="top" data-toggle="tooltip" title="modifier"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+     <td><a href="<?php echo Router::url('personnels/edit/'.$p->ID); ?>"><span class="glyphicon glyphicon-pencil"></span></span></a></td>
    <!---  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td> 
   -->
 
@@ -75,22 +75,41 @@
         <h4 class="modal-title custom_align" id="Heading">Modifier </h4>
       </div>
           <div class="modal-body">
-          <div class="form-group">
-        <input class="form-control " type="text" placeholder="Mohsin">
-        </div>
-        <div class="form-group">
+          <form action="<?php echo Router::url('personnels/edit/'.$id); ?>" method="post">
+                <div class="form-group">
+                <input class="form-control " name="NOM" type="text" placeholder="nom">
+                </div>
 
-        <input class="form-control " type="text" placeholder="Irshad">
-        </div>
-        <div class="form-group">
-        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+                <div class="form-group">
+                <input class="form-control " name="PRENOM" type="text" placeholder="prénom">
+                </div>
+                
+                <div class="form-group">
+                <input class="form-control " name="EMAIL" type="text" placeholder="Email">
+                </div>
 
+                <div class="form-group">
+                <input class="form-control " name="MDP" type="password" placeholder="Mot de passe">
+                </div>
 
-        </div>
-      </div>
-          <div class="modal-footer ">
+                <div class="form-group">
+                <input class="form-control " name="TEL" type="text" placeholder="Téléphone">
+                </div>
+                <div class="form-group">
+                <label for="sel1">Select list:</label>
+                <select name="ROLE" class="form-control" id="sel1">
+                  <option>Responsable administratif</option>
+                  <option>Vacataire</option>
+                  <option>Responsable financier</option>
+                </select>
+                </div>
+              </div> 
+              <div class="modal-footer ">
         <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Modifier</button>
+      </div>                 
+                    </form>
       </div>
+          
         </div>
     <!-- /.modal-content -->
   </div>
