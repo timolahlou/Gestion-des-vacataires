@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Gestion de contrat</title>
+<!-- Bootstrap -->
+<meta charset="utf-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#mytable #checkall").click(function () {
+						if ($("#mytable #checkall").is(':checked')) {
+								$("#mytable input[type=checkbox]").each(function () {
+										$(this).prop("checked", true);
+								});
+
+						} else {
+								$("#mytable input[type=checkbox]").each(function () {
+										$(this).prop("checked", false);
+								});
+						}
+				});
+
+				$("[data-toggle=tooltip]").tooltip();
+			});
+
+		</script>
+
+</head>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Gestion des contrats</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+
+
+	<div class="container">
+	<div class="row">
+
+        <div class="col-md-12">
+          <h2 class="display-2" style="text-align:center;line-height:2em;" >Gestion des contrats</h2>
+
+          <div class="form-group col-md-offset-4 ajouter">
+          <input class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter une contrat" data-toggle="modal" data-target="#Ajouter_contrat">
+
+          <br /><br /><br />
+
+          </div>
+
+              <form class="form-inline"  style="line-height:6em;text-align:center">
+          			<label for="doc_cours">Le contrat du vacataire: </label>
+                <select class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
+                    <option>timo lmkawed</option>
+                    <option>akram tchioro</option>
+                    <option>nabil lhokoma</option>
+                </select>
+                <input style=" margin-left: 1cm; width: 15em; " class='btn btn-primary' type="button" value="Afficher contrat" data-toggle="modal" data-target="#Afficher_contrat">
+
+              </form>
+
+        </div>
+	</div>
+</div>
+
+
+
+<div class="modal fade" id="Afficher_contrat" tabindex="-1" role="dialog" aria-labelledby="Afficher_contrat" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <h4 class="modal-title custom_align" id="Heading">Contrat du</h4> // php njibo smiytou
+          </div>
+            <div class="modal-body">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Libelle document">
+            </div>
+        <!-- <div class="form-group">
+        <input class="form-control " type="text" placeholder="Etat document">
+            </div> -->
+        <div class="form-group">
+        <input type="file" class="form-control-file" id="doc">
+        </div>
+          </div>
+              <div class="modal-footer ">
+            <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+          </div>
+            </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Modifier votre élément</h4>
+      </div>
+      <div class="modal-body">
+		<form>
+        <div class="form-group">
+		<input class="form-control " type="text" placeholder="Libelle document">
+		</div>
+		<div class="form-group">
+		<input type="file" class="form-control-file" id="doc">
+		</div>
+		<button type="submit" class="btn btn-primary">Valider</button>
+		</form>
+      </div>
+          <div class="modal-footer ">
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
+      </div>
+        </div>
+    <!-- /.modal-content -->
+  </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+
+		<div class="modal fade" id="Ajouter_contrat" tabindex="-1" role="dialog" aria-labelledby="Ajouter_contrat" aria-hidden="true">
+		      <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				        <h4 class="modal-title custom_align" id="Heading">Ajouter votre élément</h4>
+				      </div>
+			          <div class="modal-body">
+						<div class="form-group">
+				        <input class="form-control " type="text" placeholder="Libelle document">
+				        </div>
+						<!-- <div class="form-group">
+						<input class="form-control " type="text" placeholder="Etat document">
+				        </div> -->
+						<div class="form-group">
+						<input type="file" class="form-control-file" id="doc">
+						</div>
+				      </div>
+				          <div class="modal-footer ">
+				        <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+				      </div>
+				        </div>
+				    <!-- /.modal-content -->
+				  </div>
+		      <!-- /.modal-dialog -->
+		    </div>
+
+
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Supprimer votre élément</h4>
+      </div>
+          <div class="modal-body">
+
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Êtes-vous sûr de supprimer cet élément?</div>
+
+      </div>
+        <div class="modal-footer ">
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+      </div>
+        </div>
+    <!-- /.modal-content -->
+  </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+
+</body>
+</html>
