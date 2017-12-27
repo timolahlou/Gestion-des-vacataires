@@ -77,11 +77,19 @@ class ContratsController extends Controller{
 				$conditions = array('ID_SIGNE' => $idV);
 				$this->loadModel('Contrat');
 				$d['contrat'] = $this->Contrat->findFirst(array(
-				'fields'     => ' Contrat.PrixTP,Contrat.PrixTD,Contrat.PrixCM,Personnel.NOM as nomV',
+				'fields'     => ' Contrat.ID,Contrat.PrixTP,Contrat.PrixTD,Contrat.PrixCM,Personnel.NOM as nomV',
 				'conditions' => $conditions,
 				'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
 				));
 			$this->set($d);
 		}
+
+		function delete($id)
+	{
+		$this->loadModel('Contrat');
+		$this->Contrat->delete($id);
+		$this->Session->setFlash('Le Contrat a bien été supprimé'); 
+		$this->redirect('listeContrats'); 
+	}
 
 }
