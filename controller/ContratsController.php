@@ -23,9 +23,20 @@ class ContratsController extends Controller{
 				));
 				$this->loadModel('Contrat');
 				$d['contrats'] = $this->Contrat->find(array(
-				'fields'     => ' Personnel.NOM as nomV',
+				'fields'     => ' Personnel.ID,Personnel.NOM as nomV',
 				'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
 				));
+				if ($this->request->data) {
+
+					$idV =  $this->request->data->idV;
+					$condition = array('ID_SIGNE' => $idV);
+					$d['contrat'] = $this->Contrat->findFirst(array(
+					'fields'     => ' Contrat.PrixTP,Contrat.PrixTD,Contrat.PrixCM,Personnel.NOM as nomV',
+					'conditions' => $condition,
+					'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
+					));
+				}
+				
 			$this->set($d);
 		}
 
@@ -43,6 +54,19 @@ class ContratsController extends Controller{
 				));
 			}
 			$d['id'] = $id; 
+			$this->set($d);
+		}
+
+		function afficherContrat()
+		{
+				$idV =  $this->request->data->idV;
+				$conditions = array('ID_SIGNE' => $idV);
+				$this->loadModel('Contrat');
+				$d['contrat'] = $this->Contrat->findFirst(array(
+				'fields'     => ' Contrat.PrixTP,Contrat.PrixTD,Contrat.PrixCM,Personnel.NOM as nomV',
+				'conditions' => $conditions,
+				'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
+				));
 			$this->set($d);
 		}
 

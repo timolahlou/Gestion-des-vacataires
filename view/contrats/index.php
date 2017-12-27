@@ -13,11 +13,11 @@
 
           </div>
 
-              <form class="form-inline"  style="line-height:6em;text-align:center">
+              <form action="<?php echo Router::url('contrats/index'); ?>" method="post" class="form-inline"  style="line-height:6em;text-align:center">
           			<label for="doc_cours">Le contrat du vacataire: </label>
-                <select class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
+                <select name="idV" class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
                    <?php  foreach ($contrats as $c) {?>
-                      <option><?php echo $c->nomV; ?></option>
+                      <option value="<?php echo $c->ID; ?>"><?php echo $c->nomV; ?></option>
                    <?php } ?>
                 </select>
                 <input style=" margin-left: 1cm; width: 15em; " class='btn btn-primary' type="button" value="Afficher contrat" data-toggle="modal" data-target="#Afficher_contrat">
@@ -35,7 +35,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-            <h4 class="modal-title custom_align" id="Heading">Contrat du</h4> // php njibo smiytou
+            <h4 class="modal-title custom_align" id="Heading">Contrat du</h4> <?php  echo $contrat->nomV;  ?>
           </div>
             <div class="modal-body">
             <div class="form-group">
