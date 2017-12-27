@@ -1,4 +1,4 @@
-<?php  include "../view/layout/head.php";  ?>
+<?php  include "../view/layout/head.php";?>
 
 <div class="form-group col-md-offset-1 ajouter">
 
