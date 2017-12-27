@@ -23,8 +23,8 @@ class ContratsController extends Controller{
 				));
 				$this->loadModel('Contrat');
 				$d['contrats'] = $this->Contrat->find(array(
-				'fields'     => ' Formation.ID as nomS',
-				'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_DIRIGE')
+				'fields'     => ' Personnel.NOM as nomV',
+				'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
 				));
 			$this->set($d);
 		}

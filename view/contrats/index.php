@@ -16,9 +16,9 @@
               <form class="form-inline"  style="line-height:6em;text-align:center">
           			<label for="doc_cours">Le contrat du vacataire: </label>
                 <select class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
-                    <option>timo lmkawed</option>
-                    <option>akram tchioro</option>
-                    <option>nabil lhokoma</option>
+                   <?php  foreach ($contrats as $c) {?>
+                      <option><?php echo $c->nomV; ?></option>
+                   <?php } ?>
                 </select>
                 <input style=" margin-left: 1cm; width: 15em; " class='btn btn-primary' type="button" value="Afficher contrat" data-toggle="modal" data-target="#Afficher_contrat">
 
