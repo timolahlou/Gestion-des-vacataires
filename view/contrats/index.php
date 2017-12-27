@@ -106,9 +106,10 @@
 				        <h4 class="modal-title custom_align" id="Heading">Ajouter une contrat</h4>
 				      </div>
 			          <div class="modal-body">
+                  <form action="<?php echo Router::url('contrats/ajouter'); ?>" method="post">
                   <div class="form-group">
-                     <span class="text-left">personnel:
-                       <select name="ID_DIRIGE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                     <span class="text-left">Vacataire :
+                       <select name="ID_SIGNE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
                          <?php  foreach ($personnels as $p) { ?>
                          <option value="<?php  echo $p->ID; ?>"><?php  echo $p->NOM; ?></option>
                          <?php   }  ?>
@@ -117,21 +118,20 @@
                  </div>
         						<div class="form-group">
                       <span class="text-left">Prix CM :</span>
-        				        <input class="form-control " type="text" placeholder="Prix CM">
+        				        <input name="PRIXCM" class="form-control " type="text" placeholder="Prix CM">
         				    </div>
                     <div class="form-group">
                       <span class="text-left">Prix TD :</span>
-        				        <input class="form-control " type="text" placeholder="Prix TD">
+        				        <input name="PRIXTD" class="form-control " type="text" placeholder="Prix TD">
         				    </div>
                     <div class="form-group">
                       <span class="text-left">Prix TP :</span>
-        				        <input class="form-control " type="text" placeholder="Prix TP">
+        				        <input name="PRIXTP" class="form-control " type="text" placeholder="Prix TP">
         				    </div>
-
-
-				      </div>
-				          <div class="modal-footer ">
-				        <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+                    <div class="modal-footer ">
+                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+              </div>
+              </form>
 				      </div>
 				        </div>
 				    <!-- /.modal-content -->
