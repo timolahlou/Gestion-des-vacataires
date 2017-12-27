@@ -13,14 +13,14 @@
 
           </div>
 
-              <form action="<?php echo Router::url('contrats/index'); ?>" method="post" class="form-inline"  style="line-height:6em;text-align:center">
+              <form action="<?php echo Router::url('contrats/afficherContrat'); ?>" method="post" class="form-inline"  style="line-height:6em;text-align:center">
           			<label for="doc_cours">Le contrat du vacataire: </label>
                 <select name="idV" class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
                    <?php  foreach ($contrats as $c) {?>
                       <option value="<?php echo $c->ID; ?>"><?php echo $c->nomV; ?></option>
                    <?php } ?>
                 </select>
-                <input style=" margin-left: 1cm; width: 15em; " class='btn btn-primary' type="button" value="Afficher contrat" data-toggle="modal" data-target="#Afficher_contrat">
+                <input type="submit" style=" margin-left: 1cm; width: 15em; " class='btn btn-primary' type="button" value="Afficher contrat" data-toggle="modal" data-target="#Afficher_contrat">
 
               </form>
 
@@ -30,40 +30,7 @@
 
 
 
-<div class="modal fade" id="Afficher_contrat" tabindex="-1" role="dialog" aria-labelledby="Afficher_contrat" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-            <h4 class="modal-title custom_align" id="Heading">Contrat du</h4> <?php  echo $contrat->nomV;  ?>
-          </div>
-            <div class="modal-body">
-            <div class="form-group">
-              <span class="text-left">Prix CM :</span>
-              <!-- HNA HAJIBO L PRIX B PHP -->
 
-            </div>
-        <div class="form-group">
-            <span class="text-left">Prix TD:</span> <!-- HNA HAJIBO L PRIX B PHP -->
-
-        </div>
-
-        <div class="form-group">
-            <span class="text-left">Prix TP:</span> <!-- HNA HAJIBO L PRIX B PHP -->
-
-        </div>
-      </div>
-              <div class="modal-footer">
-
-            <button type="button" class="btn btn-warning btn-lg" style=" display:none;  display: inline;" data-toggle="modal" data-target="#edit_contrat">Modifier</button>
-            <button type="button" class="btn btn-danger btn-lg " style=" display:none; display: inline;" data-toggle="modal" data-target="#delete">Supprimer</button>
-
-          </div>
-            </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
 
 
 <div class="modal fade" id="edit_contrat" tabindex="-1" role="dialog" aria-labelledby="edit_contrat" aria-hidden="true">
