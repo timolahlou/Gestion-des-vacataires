@@ -14,7 +14,7 @@ class CoursController extends Controller{
 			$d['formations'] = $this->Formation->find();
 		$this->loadModel('Cour');
 		$d['cours'] = $this->Cour->find(array(
-			'fields'     => ' Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens',
+			'fields'     => ' Cour.ETATCOURS,Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens',
 			'join'       => array('Personnels as Personnel'=>'Personnel.id=Cour.ID_VALIDE_COURS')));
 		if($this->Session->user('ROLE') == '1'){
 				$d['p'] = "Responsable administratif";
