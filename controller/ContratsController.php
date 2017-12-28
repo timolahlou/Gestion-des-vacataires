@@ -85,11 +85,11 @@ class ContratsController extends Controller{
 		}
 
 		function delete($id)
-	{
-		$this->loadModel('Contrat');
-		$this->Contrat->delete($id);
-		$this->Session->setFlash('Le Contrat a bien été supprimé'); 
-		$this->redirect('listeContrats'); 
-	}
+		{
+			$this->loadModel('Contrat');
+			$this->Contrat->delete($id);
+			$this->Session->setFlash('Le Contrat a bien été supprimé'); 
+			$this->redirect('listeContrats'); 
+		}
 
 }

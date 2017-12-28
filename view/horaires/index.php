@@ -1,69 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Gestion d'horaires</title>
-<!-- Bootstrap -->
-<meta charset="utf-8">
-<!-- Latest compiled and minified CSS -->
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
-
-<!-- jQuery library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		$(function () {
-			$('#datetimepicker1').datetimepicker({format: 'DD-MM-YYYY H:mm'});
-			
-		});
-		
-		$(function () {
-			$('#datetimepicker2').datetimepicker({format: 'DD-MM-YYYY H:mm'});
-			
-		});
-		
-		$(document).ready(function(){
-			$("#mytable #checkall").click(function () {
-						if ($("#mytable #checkall").is(':checked')) {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", true);
-								});
-
-						} else {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", false);
-								});
-						}
-				});
-
-				$("[data-toggle=tooltip]").tooltip();
-			});
-		</script>
-
-</head>
- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Emploi du temps</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav> 
-
-<body>
-
+<?php  include "../view/layout/head.php";  ?>
 
 	<div class="container">
 	<h1>Horaires de cours</h1>
@@ -85,21 +20,25 @@
                     <th>Date</th>
                      <th>Duree</th>
                      <th>Salle</th>
+                     <th>Type</th>
                      <th>Modifier</th>
                        <th>Supprimer</th>
                    </thead>
     <tbody>
 
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>test</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-	<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-
+    	<?php  foreach ($horaires as $h) { ?>
+		    <tr>
+			    <td><input type="checkbox" class="checkthis" /></td>
+			    <td><?php  echo $h->LIBELLE;  ?></td>
+			    <td><?php  echo	$h->DATEHORAIRE   ?></td>
+			    <td><?php  echo	$h->DUREE   ?></td>
+			    <td><?php  echo	$h->SALLE   ?></td>
+			    <td><?php  echo	$h->TYPE   ?></td>
+			    <td><?php  echo	$h->TYPE   ?></td>
+				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+			    <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+		    </tr>
+		<?php  }  ?>    
     </tbody>
 
 </table>

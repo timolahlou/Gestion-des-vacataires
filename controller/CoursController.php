@@ -29,8 +29,6 @@ class CoursController extends Controller{
 	function ajouter($id = null)
 	{
 		$d['id'] = $id;
-		var_dump($this->request);
-		die();
 		if($this->request->data){
 				$this->loadModel('Cour');
 				$this->Cour->save($this->request->data);
