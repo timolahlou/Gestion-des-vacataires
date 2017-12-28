@@ -127,16 +127,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									echo '<h4>Nom : '.$data['nom'].'<br>Prénom : '.$data['prenom'].'<br>Télephone : '.$data['tel'].'</h4></div><br><br><br>';
 							}
 
-                  //   hna la fonction la tatcalculer le montant w les heurs effectuer..
+                  //   hna les requetes la tatcalculer le montant w les heurs effectuer..
+
+                  if (etatvalid != validé && la dateVirment du mois != la date du mois du system ) {
+                  									echo "<h4>le montant: '.$data['montant'].'<br></h4>";
+                  								  echo "<h4>le nbr heurs : '.$data['heurs'].'<br></h4>";
+                  									echo"<input class='btn btn-success ' style="width:40%; margin-top:5%;" type="button" value="Valider virement"><br>";
+                  	}
+                  else
+                  {
+                    echo "<script type='text/javascript'>alert('virment de ce mois deja validé !');</script>";
+                  }
+
 
 						}
 
 					}
 			?>
-			<div class="buttons">
-				<input class='btn btn-success ' style="width:40%; margin-top:5%;" type="button" value="Valider virement"><br>
 
-			</div>
 
 			 </div>
   </div>
