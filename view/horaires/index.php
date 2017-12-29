@@ -39,7 +39,7 @@
 			    <td><?php  echo	$h->NOM   ?></td>
 			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
 				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-			    <td></td>
+			    <td><a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('horaires/delete/'.$h->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 		    </tr>
 		<?php  }  ?>    
     </tbody>
