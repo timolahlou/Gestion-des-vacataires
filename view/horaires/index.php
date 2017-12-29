@@ -39,7 +39,7 @@
 			    <td><?php  echo	$h->NOM   ?></td>
 			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
 				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-			    <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+			    <td></td>
 		    </tr>
 		<?php  }  ?>    
     </tbody>
@@ -128,36 +128,38 @@
 	<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="Ajouter un horaire" aria-hidden="true">
 	  <div class="modal-dialog">
 			<div class="modal-content">
+				<form action="<?php echo Router::url('horaires/ajouter'); ?>" method="post">
 			  <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 				<h4 class="modal-title custom_align" id="Heading">Ajouter un élément</h4>
 			  </div>
 			  <div class="modal-body">
-				<form>
 				<div class="form-group">
-					<select name="Libelle cours" class="form-control">
-					  <option>Libelle cours</option>
+					<select name="ID_PLANIFIE" class="form-control">
+						<?php  foreach ($horaires as $h) { ?>
+					  <option value="<?php  echo $h->idCours;  ?>"><?php  echo $h->LIBELLE;  ?></option>
+					  <?php  }  ?>
 					</select>
 				</div>
 				<div class="form-group">
 					<div class='input-group date' id='datetimepicker2'>
-						<input type='text' name="Date" class="form-control" />
+						<input type='text' name="DATEHORAIRE" class="form-control" />
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</span>
 					</div>
 				</div>
 				<div class="form-group">
-				<input class="form-control " name="Duree" type="text" placeholder="Duree">
+				<input class="form-control " name="DUREE" type="text" placeholder="Duree">
 				</div>
 				<div class="form-group">
-				<input class="form-control " name="Salle" type="text" placeholder="Salle">
+				<input class="form-control " name="SALLE" type="text" placeholder="Salle">
 				</div>
-				</form>
-			  </div>
+ 				  </div>
 				  <div class="modal-footer ">
-				<button type="button" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+				<button type="submit" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
 			  </div>
+			  </form>
 				</div>
 			<!-- /.modal-content -->
 		  </div>
