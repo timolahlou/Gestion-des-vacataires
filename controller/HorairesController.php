@@ -18,8 +18,8 @@ class HorairesController extends Controller{
 
 		$this->loadModel("Horaire");
 		$d['horaires'] = $this->Horaire->find(array(
-			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.LIBELLE,Cour.TYPE',
-			'join'       => array('Cours as Cour'=>'Cour.id=Horaire.ID_PLANIFIE')
+			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
+			'join'       => array('Cours as Cour'=>'Cour.id=Horaire.ID_PLANIFIE', 'Personnels as Personnel' => 'Cour.ID_ENSEIGNE=Personnel.id','Formations as Formation' => 'Cour.ID_APPARTIENT=Formation.id')
 		));
 		$this->set($d);
 	}

@@ -21,6 +21,8 @@
                      <th>Duree</th>
                      <th>Salle</th>
                      <th>Type</th>
+                     <th>Enseignant</th>
+                     <th>Formation</th>
                      <th>Modifier</th>
                        <th>Supprimer</th>
                    </thead>
@@ -34,7 +36,8 @@
 			    <td><?php  echo	$h->DUREE   ?></td>
 			    <td><?php  echo	$h->SALLE   ?></td>
 			    <td><?php  echo	$h->TYPE   ?></td>
-			    <td><?php  echo	$h->TYPE   ?></td>
+			    <td><?php  echo	$h->NOM   ?></td>
+			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
 				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 			    <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 		    </tr>
