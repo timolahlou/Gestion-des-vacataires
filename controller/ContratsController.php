@@ -23,16 +23,12 @@ class ContratsController extends Controller{
 				if ($this->request->data) {
 
 					$idV =  $this->request->data->idV;
-					if ($this->Session->user('ROLE') == '2') {
-					$condition = array('ID_SIGNE' => $this->Session->user('ID'));
+					$condition = array('ID_SIGNE' => $idV);
 					$d['contrat'] = $this->Contrat->findFirst(array(
 					'fields'     => ' Contrat.PrixTP,Contrat.PrixTD,Contrat.PrixCM,Personnel.NOM as nomV',
 					'conditions' => $condition,
 					'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
 					));
-					}else{
-						$this->redirect('/');
-					}
 				}
 				
 			$this->set($d);
