@@ -21,17 +21,17 @@ class FormationsController extends Controller{
 			if($this->Session->isLogged()){
 			if($this->Session->user('ROLE') == '1'){
 
-			$this->loadModel('Formation');
-			$d['formations'] = $this->Formation->find(array(
-			'fields'     => ' Formation.ID,LIBELLEFORMATION,Personnel.ID as idD,Personnel.NOM as nomD,Personnel.PRENOM as nomS',
-			'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_DIRIGE')
-		));
-			$d['supervise'] = $this->Formation->find(array(
-			'fields'     => ' Personnel.ID as idS,Personnel.NOM as nomS',
-			'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_SUPERVISE')
-		));
-		$this->set($d);
-		}else{
+				$this->loadModel('Formation');
+				$d['formations'] = $this->Formation->find(array(
+				'fields'     => ' Formation.ID,LIBELLEFORMATION,Personnel.ID as idD,Personnel.NOM as nomD,Personnel.PRENOM as nomS',
+				'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_DIRIGE')
+				));
+				$d['supervise'] = $this->Formation->find(array(
+				'fields'     => ' Personnel.ID as idS,Personnel.NOM as nomS',
+				'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_SUPERVISE')
+				));
+				$this->set($d);
+			}else{
 				$this->redirect('/');
 			}
 		}

@@ -53,9 +53,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <a class="navbar-brand" href="#">UHA</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="<?php echo Router::url('listeCours'); ?>">Liste des Cours</a></li>
+      <li><a href="<?php echo Router::url('listeCours'); ?>">Mes Cours</a></li>
       <li><a href="<?php echo Router::url('listeFormations'); ?>">Liste des Formations</a></li>
-      <li><a href="<?php echo Router::url('horaires'); ?>">Horaires</a></li>
+      <li><a href="<?php echo Router::url('horaires'); ?>">Mes Horaires</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $p; ?></a></li>

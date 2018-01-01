@@ -26,8 +26,10 @@
                     <th>Type de cours</th>
                     <th>Enseignat</th>
                     <th>état</th>
+                     <?php  if($p != "Vacataire"){ ?>
                       <th>Modifier</th>
                        <th>Supprimer</th>
+                        <?php  }  ?>
                    </thead>
     <tbody>
     <?php  foreach ($cours as $c) {  ?>
@@ -37,12 +39,16 @@
     <td><?php echo $c->TYPE;  ?></td>
     <td><?php echo $c->Ens;  ?></td>
     <td><?php if ($c->ETATCOURS == 1) { echo "Validé"; }else{ echo "non validé"; } ?><button type="submit" class="btn btn-success btn-xs btn-lg"><span class="glyphicon glyphicon-ok"></span></button></td>
-    <td><button class="btn btn-primary btn-xs" data-title="edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+   <?php  if($p != "Vacataire"){ ?>
+ <td>
+      <button class="btn btn-primary btn-xs" data-title="edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
    <!-- <td><button class="btn btn-danger btn-xs" data-title="delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     </tr>  -->
       <td>
               <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('cours/delete/'.$c->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+              
             </td>
+            <?php  }  ?>
               </tr>
           <?php  } ?>
     </tbody>
