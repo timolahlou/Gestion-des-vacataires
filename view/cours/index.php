@@ -7,7 +7,9 @@
 
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">
-		<input class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un cours" data-toggle="modal" data-target="#Ajouter_cours">
+	 <?php  if($p != "Vacataire"){ ?>   
+	<input class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un cours" data-toggle="modal" data-target="#Ajouter_cours">
+  <?php } ?>
 		</div>
 	<div class="row">
 
@@ -144,7 +146,7 @@
                   </select>
                 </div>
                 <div class="modal-footer ">
-                <button type="submit" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
+               <button type="submit" class="btn btn-success" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Ajouter</button>
               </div>
                 </form>
 				      </div>
