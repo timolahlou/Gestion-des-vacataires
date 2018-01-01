@@ -1,5 +1,8 @@
-<?php  include "../view/layout/head.php";  ?>
-
+<?php if ($p == "Vacataire") {
+        include "../view/layout/head-vacataire.php";
+}else{
+        include "../view/layout/head.php"; 
+} ?>
 	<div class="container">
 	<h1>Horaires de cours</h1>
 	<div class="form-group col-md-offset-4 ajouter">
@@ -128,12 +131,12 @@
 	<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="Ajouter un horaire" aria-hidden="true">
 	  <div class="modal-dialog">
 			<div class="modal-content">
-				<form action="<?php echo Router::url('horaires/ajouter'); ?>" method="post">
 			  <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 				<h4 class="modal-title custom_align" id="Heading">Ajouter un élément</h4>
 			  </div>
 			  <div class="modal-body">
+			  					<form action="<?php echo Router::url('horaires/ajouter'); ?>" method="post">
 				<div class="form-group">
 					<select name="ID_PLANIFIE" class="form-control">
 						<?php  foreach ($horaires as $h) { ?>
@@ -142,12 +145,12 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<div class='input-group date' id='datetimepicker2'>
-						<input type='text' name="DATEHORAIRE" class="form-control" />
-						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
+				<div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
 				</div>
 				<div class="form-group">
 				<input class="form-control " name="DUREE" type="text" placeholder="Duree">

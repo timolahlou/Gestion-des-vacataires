@@ -1,4 +1,9 @@
-<?php  include "../view/layout/head.php";  ?>
+<?php if ($p == "Vacataire") {
+        include "../view/layout/head-vacataire.php";
+}else{
+        include "../view/layout/head.php"; 
+} ?>
+  
 
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">

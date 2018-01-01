@@ -21,7 +21,7 @@ class PersonnelsController extends Controller{
 			if($this->Session->user('ROLE') == '1'){
 				$this->redirect('listePersonnes');
 			}elseif ($this->Session->user('ROLE') == '2') {
-				$this->redirect('listeFormations');
+				$this->redirect('listeCours');
 			}elseif ($this->Session->user('ROLE') == '3') {
 				$this->redirect('listePersonnes');
 			}else{
@@ -37,6 +37,9 @@ class PersonnelsController extends Controller{
 		}
 		$this->loadModel('Personnel');
 
+		if($this->Session->isLogged()){
+			if($this->Session->user('ROLE') == '1'){
+
 		$d['personnels'] = $this->Personnel->find();
 		if($this->Session->user('ROLE') == '1'){
 				$d['p'] = "Responsable administratif";
@@ -46,6 +49,10 @@ class PersonnelsController extends Controller{
 				$d['p'] = "Responsable financier";
 			}
 		$this->set($d);
+			}else{
+				$this->redirect('/');
+			}
+		}
 	}
 
 	function ajouter($id = null)

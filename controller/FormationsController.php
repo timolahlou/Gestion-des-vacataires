@@ -18,7 +18,9 @@ class FormationsController extends Controller{
 			}elseif ($this->Session->user('ROLE') == '3') {
 				$d['p'] = "Responsable financier";
 			}
-			
+			if($this->Session->isLogged()){
+			if($this->Session->user('ROLE') == '1'){
+
 			$this->loadModel('Formation');
 			$d['formations'] = $this->Formation->find(array(
 			'fields'     => ' Formation.ID,LIBELLEFORMATION,Personnel.ID as idD,Personnel.NOM as nomD,Personnel.PRENOM as nomS',
@@ -29,6 +31,10 @@ class FormationsController extends Controller{
 			'join'       => array('Personnels as Personnel'=>'Personnel.id=Formation.ID_SUPERVISE')
 		));
 		$this->set($d);
+		}else{
+				$this->redirect('/');
+			}
+		}
 	}
 
 	function ajouter($id = null)
