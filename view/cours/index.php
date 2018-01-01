@@ -20,7 +20,6 @@
               <table id="mytable" class="table table-bordred table-striped">
 
                    <thead>
-
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Libelle cours</th>
                     <th>Type de cours</th>
@@ -38,8 +37,12 @@
     <td><?php echo $c->LIBELLE;  ?></td>
     <td><?php echo $c->TYPE;  ?></td>
     <td><?php echo $c->Ens;  ?></td>
-    <td><?php if ($c->ETATCOURS == 1) { echo "Validé"; }else{ echo "non validé"; } ?><button type="submit" class="btn btn-success btn-xs btn-lg"><span class="glyphicon glyphicon-ok"></span></button></td>
+    <td><?php if ($c->ETATCOURS == 1) { echo "Validé"; }else{ echo "non validé"; } ?>
+   <?php  if($p != "Vacataire"){ ?>    
+   <button type="submit" class="btn btn-success btn-xs btn-lg"><span class="glyphicon glyphicon-ok"></span></button>
    <?php  if($p != "Vacataire"){ ?>
+    </td>
+   <?php  }  ?>
  <td>
       <button class="btn btn-primary btn-xs" data-title="edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
    <!-- <td><button class="btn btn-danger btn-xs" data-title="delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
