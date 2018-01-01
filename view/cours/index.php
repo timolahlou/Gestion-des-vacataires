@@ -26,7 +26,6 @@
                    <th>Libelle cours</th>
                     <th>Type de cours</th>
                     <th>Enseignat</th>
-                    <th>état</th>
                      <?php  if($p != "Vacataire"){ ?>
                       <th>Modifier</th>
                        <th>Supprimer</th>
@@ -39,9 +38,8 @@
     <td><?php echo $c->LIBELLE;  ?></td>
     <td><?php echo $c->TYPE;  ?></td>
     <td><?php echo $c->Ens;  ?></td>
-    <td><?php if ($c->ETATCOURS == 1) { echo "Validé"; }else{ echo "non validé"; } ?>
    <?php  if($p != "Vacataire"){ ?>    
-   <button type="submit" class="btn btn-success btn-xs btn-lg"><span class="glyphicon glyphicon-ok"></span></button>
+   
    <?php  if($p != "Vacataire"){ ?>
     </td>
    <?php  }  ?>
@@ -119,7 +117,12 @@
 				        </div>
 
 				        <div class="form-group">
-				        <input name="TYPE" class="form-control " type="text" placeholder="Type de Cours">
+				          <select name="TYPE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
+                  <option value="CM">CM</option>
+                  <option value="TD">TD</option>
+                  <option value="TP">TP</option>
+                  <option value="Exam">Exam</option>
+                  </select>
 				        </div>
                 <div class="form-group">
                   <select name="ID_ENSEIGNE" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">

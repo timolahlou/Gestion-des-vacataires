@@ -20,15 +20,15 @@ class HorairesController extends Controller{
 		$this->loadModel("Horaire");
 		if($this->Session->user('ROLE') == '2')
 		{
-			$conditions = array('Personnel.ROLE' => '2');
+			$conditions = array('Personnel.ID' => $this->Session->user('ID'));
 			$d['horaires'] = $this->Horaire->find(array(
-			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
+			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.ETATHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
 			'conditions' => $conditions,
 			'join'       => array('Cours as Cour'=>'Cour.id=Horaire.ID_PLANIFIE', 'Personnels as Personnel' => 'Cour.ID_ENSEIGNE=Personnel.id','Formations as Formation' => 'Cour.ID_APPARTIENT=Formation.id'
 			)));
 		}else{
 			$d['horaires'] = $this->Horaire->find(array(
-			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
+			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.ETATHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
 			'join'       => array('Cours as Cour'=>'Cour.id=Horaire.ID_PLANIFIE', 'Personnels as Personnel' => 'Cour.ID_ENSEIGNE=Personnel.id','Formations as Formation' => 'Cour.ID_APPARTIENT=Formation.id'
 			)));
 		}

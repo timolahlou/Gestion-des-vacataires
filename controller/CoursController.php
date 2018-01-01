@@ -22,14 +22,15 @@ class CoursController extends Controller{
 				
 		$this->loadModel('Cour');
 		if ($this->Session->user('ROLE') == '2') {
-			$conditions = array('Personnel.ROLE' => '2');
+			
+			$conditions = array('Personnel.ID' => $this->Session->user('ID'));
 			$d['cours'] = $this->Cour->find(array(
-			'fields'     => ' Cour.ETATCOURS,Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens,Personnel.ROLE as role ',
+			'fields'     => ' Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens,Personnel.ROLE as role ',
 			'conditions' =>  $conditions,
 			'join'       => array('Personnels as Personnel'=>'Personnel.id=Cour.ID_ENSEIGNE')));
 		}else{
 			$d['cours'] = $this->Cour->find(array(
-			'fields'     => ' Cour.ETATCOURS,Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens,Personnel.ROLE as role ',
+			'fields'     => ' Cour.ID_VALIDE_COURS,Cour.ID,Cour.LIBELLE,Cour.TYPE,Personnel.NOM as Ens,Personnel.ROLE as role ',
 			'join'       => array('Personnels as Personnel'=>'Personnel.id=Cour.ID_ENSEIGNE')));
 		}
 		

@@ -25,7 +25,8 @@
                     <th>Date</th>
                      <th>Duree</th>
                      <th>Salle</th>
-                     <th>Type</th>
+                     <th>Type de cours</th>
+                     <th>Etat de cours</th>
                      <th>Enseignant</th>
                      <th>Formation</th>
                      <?php  if($p != "Vacataire"){ ?>   
@@ -43,6 +44,7 @@
 			    <td><?php  echo	$h->DUREE   ?></td>
 			    <td><?php  echo	$h->SALLE   ?></td>
 			    <td><?php  echo	$h->TYPE   ?></td>
+			    <td><?php  if($h->ETATHORAIRE == 1){ echo "validé";}else{ echo "non validé";}   ?></td>
 			    <td><?php  echo	$h->NOM   ?></td>
 			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
 			    <?php  if($p != "Vacataire"){ ?>   
