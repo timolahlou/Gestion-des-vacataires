@@ -8,13 +8,7 @@ class ContratsController extends Controller{
 			{
 				$this->redirect('personnels/login');
 			}
-			if($this->Session->user('ROLE') == '1'){
-					$d['p'] = "Responsable administratif";
-				}elseif ($this->Session->user('ROLE') == '2') {
-					$d['p'] = "Vacataire";
-				}elseif ($this->Session->user('ROLE') == '3') {
-					$d['p'] = "Responsable financier";
-				}
+			$d['p'] = $this->Session->user('NOM');
 
 				$this->loadModel('Personnel');
 				$conditions = array('ROLE' => '2');
@@ -29,12 +23,16 @@ class ContratsController extends Controller{
 				if ($this->request->data) {
 
 					$idV =  $this->request->data->idV;
-					$condition = array('ID_SIGNE' => $idV);
+					if ($this->Session->user('ROLE') == '2') {
+					$condition = array('ID_SIGNE' => $this->Session->user('ID'));
 					$d['contrat'] = $this->Contrat->findFirst(array(
 					'fields'     => ' Contrat.PrixTP,Contrat.PrixTD,Contrat.PrixCM,Personnel.NOM as nomV',
 					'conditions' => $condition,
 					'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
 					));
+					}else{
+						$this->redirect('/');
+					}
 				}
 				
 			$this->set($d);
@@ -66,13 +64,8 @@ class ContratsController extends Controller{
 			$this->loadModel('Personnel');
 
 			$d['personnels'] = $this->Personnel->find();
-			if($this->Session->user('ROLE') == '1'){
-					$d['p'] = "Responsable administratif";
-				}elseif ($this->Session->user('ROLE') == '2') {
-					$d['p'] = "Vacataire";
-				}elseif ($this->Session->user('ROLE') == '3') {
-					$d['p'] = "Responsable financier";
-				}
+					$d['p'] = $this->Session->user('NOM');
+				
 				$idV =  $this->request->data->idV;
 				$conditions = array('ID_SIGNE' => $idV);
 				$this->loadModel('Contrat');
