@@ -6,7 +6,9 @@
 	<div class="container">
 	<h1>Horaires de cours</h1>
 	<div class="form-group col-md-offset-4 ajouter">
-		<input class="btn btn-success" style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un horaire" data-toggle="modal" data-target="#add">
+<?php  if($p != "Vacataire"){ ?>   
+<input class="btn btn-success" style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un horaire" data-toggle="modal" data-target="#add">
+<?php } ?>
 	</div>
 	<div class="row">
 
@@ -26,8 +28,10 @@
                      <th>Type</th>
                      <th>Enseignant</th>
                      <th>Formation</th>
+                     <?php  if($p != "Vacataire"){ ?>   
                      <th>Modifier</th>
                        <th>Supprimer</th>
+                        <?php  }  ?>
                    </thead>
     <tbody>
 
@@ -41,8 +45,10 @@
 			    <td><?php  echo	$h->TYPE   ?></td>
 			    <td><?php  echo	$h->NOM   ?></td>
 			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
+			    <?php  if($p != "Vacataire"){ ?>   
 				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 			    <td><a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('horaires/delete/'.$h->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
+			    <?php  }  ?>
 		    </tr>
 		<?php  }  ?>    
     </tbody>
@@ -139,8 +145,8 @@
 			  					<form action="<?php echo Router::url('horaires/ajouter'); ?>" method="post">
 				<div class="form-group">
 					<select name="ID_PLANIFIE" class="form-control">
-						<?php  foreach ($horaires as $h) { ?>
-					  <option value="<?php  echo $h->idCours;  ?>"><?php  echo $h->LIBELLE;  ?></option>
+						<?php  foreach ($cours as $c) { ?>
+					  <option value="<?php  echo $c->ID;  ?>"><?php  echo $c->LIBELLE;  ?></option>
 					  <?php  }  ?>
 					</select>
 				</div>
