@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS gestionvacataires;
+DROP DATABASE IF EXISTS MLR1;
 
-CREATE DATABASE IF NOT EXISTS gestionvacataires;
-USE gestionvacataires;
+CREATE DATABASE IF NOT EXISTS MLR1;
+USE MLR1;
 # -----------------------------------------------------------------------------
 #       TABLE : FORMATIONS
 # -----------------------------------------------------------------------------
@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS HORAIRES
    ID_PLANIFIE INTEGER(255) NOT NULL  ,
    DATEHORAIRE DATETIME NULL  ,
    DUREE REAL(255,2) NULL  ,
-   SALLE VARCHAR(255) NULL  
+   SALLE VARCHAR(255) NULL  ,
+   ETATHORAIRE BOOL NULL  
    , PRIMARY KEY (ID) 
  ) 
  comment = "";
@@ -159,8 +160,7 @@ CREATE TABLE IF NOT EXISTS COURS
    ID_APPARTIENT INTEGER(255) NOT NULL  ,
    ID_VALIDE_COURS INTEGER(255) NOT NULL  ,
    LIBELLE VARCHAR(255) NULL  ,
-   TYPE VARCHAR(255) NULL  ,
-   ETATCOURS BOOL NULL  
+   TYPE VARCHAR(255) NULL  
    , PRIMARY KEY (ID) 
  ) 
  comment = "";
