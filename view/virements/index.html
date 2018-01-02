@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Les cours</title>
+<title>Les virments</title>
 <!-- Bootstrap -->
 <meta charset="utf-8">
 <!-- Latest compiled and minified CSS -->
@@ -82,16 +82,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <div class="row">
 
         <div class="col-md-12">
-          <h2 class="display-2" style="text-align:center;line-height:2em;" >Les virments</h2>
+          <h2 class="display-2" style="text-align:center;line-height:5em;" >Valider les virment les virments</h2>
 
 
 
-              <form action="<?php echo Router::url('contrats/afficherContrat'); ?>" method="post" class="form-inline"  style="line-height:6em;text-align:center">
+              <form method="post" class="form-inline"  style="line-height:6em;text-align:center">
                 <label for="doc_cours">Le Vacataire que vous souhaiter valider le virment : </label>
                 <select name="idV" class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
-                   <?php  foreach ($contrats as $c) {?>
+                   <!-- <?php  foreach ($contrats as $c) {?>
                       <option value="<?php echo $c->ID; ?>"><?php echo $c->nomV; ?></option>
-                   <?php } ?>
+                   <?php } ?> -->
                 </select>
                 <input type="submit" style=" margin-left: 1cm; width: 15em; " class='btn btn-primary' type="button" value="Afficher contrat" data-toggle="modal" data-target="#Afficher_contrat">
 
