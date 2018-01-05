@@ -1,6 +1,7 @@
 <?php 
 class VirementsController extends Controller{
 	
+	// fonction qui permet d'afficher les virements
 	function index(){
 		if(!$this->Session->user('ROLE'))
 		{
@@ -20,6 +21,7 @@ class VirementsController extends Controller{
 		$this->set($d);
 	}
 
+// fonction qui permet d'ajouter un virement
 	function ajouter($id = null)
 	{
 		$d['id'] = $id;
@@ -37,6 +39,7 @@ class VirementsController extends Controller{
 		$this->set($d);
 	}
 
+// fonction qui permet de supprimer un virement
 	function delete($id)
 	{
 		$this->loadModel('Horaire');
@@ -45,6 +48,7 @@ class VirementsController extends Controller{
 		$this->redirect('horaires'); 
 	}
 
+// fonction qui permet de modifier un virement
 	function edit($id){
 		if(!$this->Session->user('ROLE'))
 		{
