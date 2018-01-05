@@ -1,6 +1,7 @@
 <?php 
 class HorairesController extends Controller{
 	
+	// fonction qui permet d'afficher les horaires
 	function index(){
 		if(!$this->Session->user('ROLE'))
 		{
@@ -36,6 +37,7 @@ class HorairesController extends Controller{
 		$this->set($d);
 	}
 
+// fonction qui permet d'ajouter un horaire
 	function ajouter($id = null)
 	{
 		$d['id'] = $id;
@@ -53,6 +55,7 @@ class HorairesController extends Controller{
 		$this->set($d);
 	}
 
+// fonction qui permet de supprimer les cours
 	function delete($id)
 	{
 		$this->loadModel('Horaire');
@@ -60,6 +63,8 @@ class HorairesController extends Controller{
 		$this->Session->setFlash('horaire a bien été supprimé'); 
 		$this->redirect('horaires'); 
 	}
+
+	// fonction qui permet de modifier un horaire
 
 	function edit($id){
 		if(!$this->Session->user('ROLE'))
