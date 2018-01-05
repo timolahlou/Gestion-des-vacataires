@@ -35,7 +35,7 @@ class CoursController extends Controller{
 		$this->set($d);
 	}
 
-// fonction qui permet d'jouter un cours
+	// fonction qui permet d'jouter un cours
 	function ajouter($id = null)
 	{
 		$d['id'] = $id;
@@ -53,7 +53,7 @@ class CoursController extends Controller{
 		$d['id'] = $id; 
 		$this->set($d);
 	}
-
+	// fonction qui permet de supprimer un cours
 	function delete($id)
 	{
 		$this->loadModel('Cour');
