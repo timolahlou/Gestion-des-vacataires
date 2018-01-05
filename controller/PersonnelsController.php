@@ -4,6 +4,7 @@ class PersonnelsController extends Controller{
 	/**
 	* Login
 	**/
+
 	function login(){
 		if($this->request->data){
 			$data = $this->request->data;
@@ -29,7 +30,7 @@ class PersonnelsController extends Controller{
 			}
 		}
 	}
-
+// fonction qui permet d'afficher les personnes
 	function index(){
 		if(!$this->Session->user('ROLE'))
 		{
@@ -50,7 +51,7 @@ class PersonnelsController extends Controller{
 			}
 		}
 	}
-
+// fonction qui permet d'ajouter une personnel
 	function ajouter($id = null)
 	{
 		$d['id'] = $id;
@@ -78,6 +79,7 @@ class PersonnelsController extends Controller{
 		$this->set($d);
 	}
 
+// fonction qui permet de supprimer une personnel
 	function delete($id)
 	{
 		$this->loadModel('Personnel');
