@@ -3,6 +3,7 @@ class CoursController extends Controller{
 	
 
 
+	// fonction qui permet d'afficher les cours
 	function index(){
 		if(!$this->Session->user('ROLE'))
 		{
@@ -34,6 +35,7 @@ class CoursController extends Controller{
 		$this->set($d);
 	}
 
+// fonction qui permet d'jouter un cours
 	function ajouter($id = null)
 	{
 		$d['id'] = $id;
