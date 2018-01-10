@@ -14,7 +14,7 @@ class CoursController extends Controller{
 		$this->loadModel('Formation');
 			$d['formations'] = $this->Formation->find();
 		
-				$d['p'] = $this->Session->user('NOM');;
+				$d['p'] = $this->Session->user('NOM');
 			
 				
 		$this->loadModel('Cour');

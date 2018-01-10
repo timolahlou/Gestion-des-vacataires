@@ -1,56 +1,8 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Gestion de documents</title>
-<!-- Bootstrap -->
-<meta charset="utf-8">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$("#mytable #checkall").click(function () {
-						if ($("#mytable #checkall").is(':checked')) {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", true);
-								});
-
-						} else {
-								$("#mytable input[type=checkbox]").each(function () {
-										$(this).prop("checked", false);
-								});
-						}
-				});
-
-				$("[data-toggle=tooltip]").tooltip();
-			});
-
-
-		</script>
-
-</head>
- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Gestion de documents</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Liste de documents</a></li>
-      <li><a href="ajouterDocument.html">Ajouter un document</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav> 
-
-<body>
+<?php if ($p == "Vacataire") {
+        include "../view/layout/head-vacataire.php";
+}else{
+        include "../view/layout/head.php"; 
+} ?>
 
 
 	<div class="container">
