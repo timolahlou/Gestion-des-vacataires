@@ -10,16 +10,12 @@
             <div class="form-group">
               <span class="text-left">Prix CM :</span>
              <?php  echo $contrat->PrixCM;  ?>
-
             </div>
-        <div class="form-group">
+          <div class="form-group">
             <span class="text-left">Prix TD:</span> <?php  echo $contrat->PrixTD;  ?>
-
         </div>
-
         <div class="form-group">
             <span class="text-left">Prix TP:</span> <?php  echo $contrat->PrixTP;  ?>
-
         </div>
       </div>
           <div class="modal-footer">

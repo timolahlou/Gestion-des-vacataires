@@ -39,6 +39,10 @@ class FormationsController extends Controller{
 
 	function ajouter($id = null)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		var_dump($this->request);
 		if($this->request->data){
 				$this->loadModel('Formation');
@@ -57,6 +61,10 @@ class FormationsController extends Controller{
 
 	function delete($id)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$this->loadModel('Formation');
 		$this->Formation->delete($id);
 		$this->Session->setFlash('La Formation a bien été supprimée'); 

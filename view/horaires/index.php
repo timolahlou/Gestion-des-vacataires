@@ -44,12 +44,21 @@
 			    <td><?php  echo	$h->DUREE   ?></td>
 			    <td><?php  echo	$h->SALLE   ?></td>
 			    <td><?php  echo	$h->TYPE   ?></td>
-			    <td><?php  if($h->ETATHORAIRE == 1){ echo "validé";}else{ echo "non validé";}   ?></td>
+			    <td>
+			    	
+			    	<?php  if($h->ETATHORAIRE == 1){ ?>  
+			    	<span class="glyphicon glyphicon-ok"></span>
+			    	  <?php }else{  ?>
+
+			    		<a onclick="return confirm('Voulez-vous vraiment valider ce cours ?'); " href="<?php echo Router::url('horaires/valideCours/'.$h->ID); ?>"><span class="glyphicon glyphicon-remove"></span></a>
+			    		<?php   } ?>
+
+			    </td>
 			    <td><?php  echo	$h->NOM   ?></td>
 			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
 			    <?php  if($p != "Vacataire"){ ?>   
 				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-			    <td><a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('horaires/delete/'.$h->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
+			    <td><a onclick="return confirm('Voulez-vous vraiment supprimer ?'); " href="<?php echo Router::url('horaires/delete/'.$h->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 			    <?php  }  ?>
 		    </tr>
 		<?php  }  ?>    

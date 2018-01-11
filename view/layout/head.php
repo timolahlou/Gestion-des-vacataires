@@ -49,9 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">UHA</a>
-    </div>
+    
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?php echo Router::url('listePersonnes'); ?>">Accueil</a></li>
       <li><a href="<?php echo Router::url('listeVacataires'); ?>">Liste des Vacataires</a></li>
@@ -59,6 +57,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <li><a href="<?php echo Router::url('listeFormations'); ?>">Liste des Formations</a></li>
       <li><a href="<?php echo Router::url('horaires'); ?>">Horaires</a></li>
       <li><a href="<?php echo Router::url('listeContrats'); ?>">Contrats</a></li>
+      <li><a href="<?php  echo Router::url('listeVirements'); ?>"><?php if($this->Session->user('ROLE') == '3'){ echo "Virements";}  ?> </a></li>
       <li><a href="<?php echo Router::url('documents'); ?>">Documents</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

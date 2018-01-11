@@ -1,5 +1,8 @@
-<?php  include "../view/layout/head.php";  ?>
-
+<?php if ($p == "Vacataire") {
+        include "../view/layout/head-vacataire.php";
+}else{
+        include "../view/layout/head.php"; 
+} ?>
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">
 		<input class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un vacataire" data-toggle="modal" data-target="#Ajouter_vacataire">

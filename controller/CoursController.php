@@ -38,6 +38,10 @@ class CoursController extends Controller{
 	// fonction qui permet d'jouter un cours
 	function ajouter($id = null)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$d['id'] = $id;
 		if($this->request->data){
 				$this->loadModel('Cour');
@@ -56,6 +60,10 @@ class CoursController extends Controller{
 	// fonction qui permet de supprimer un cours
 	function delete($id)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$this->loadModel('Cour');
 		$this->Cour->delete($id);
 		$this->Session->setFlash('Le Cours a bien été supprimé'); 

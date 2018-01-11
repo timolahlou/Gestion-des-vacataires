@@ -19,14 +19,13 @@ class PersonnelsController extends Controller{
 			$this->request->data->password = ''; 
 		}
 		if($this->Session->isLogged()){
+
 			if($this->Session->user('ROLE') == '1'){
 				$this->redirect('listePersonnes');
 			}elseif ($this->Session->user('ROLE') == '2') {
 				$this->redirect('listeCours');
 			}elseif ($this->Session->user('ROLE') == '3') {
-				$this->redirect('listePersonnes');
-			}else{
-				$this->redirect('/');
+				$this->redirect('virements');
 			}
 		}
 	}
@@ -39,9 +38,9 @@ class PersonnelsController extends Controller{
 		$this->loadModel('Personnel');
 
 		if($this->Session->isLogged()){
-			if($this->Session->user('ROLE') == '1'){
+			if($this->Session->user('ROLE') == '1' || $this->Session->user('ROLE') == '3'){
 
-		$d['personnels'] = $this->Personnel->find();
+			$d['personnels'] = $this->Personnel->find();
 		
 				$d['p'] = $this->Session->user('NOM');
 			
@@ -54,6 +53,10 @@ class PersonnelsController extends Controller{
 // fonction qui permet d'ajouter une personnel
 	function ajouter($id = null)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$d['id'] = $id;
 		$role = $this->request->data->ROLE;
 		if ($role == "Responsable administratif") {
@@ -82,6 +85,10 @@ class PersonnelsController extends Controller{
 // fonction qui permet de supprimer une personnel
 	function delete($id)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$this->loadModel('Personnel');
 		$this->Personnel->delete($id);
 		$this->Session->setFlash('La Personne a bien été supprimée'); 
@@ -135,16 +142,14 @@ class PersonnelsController extends Controller{
 		{
 			$this->redirect('personnels/login');
 		}
+
 		$this->loadModel('Personnel');
 		$conditions = array('ROLE'=> '2');
 		$d['personnels'] = $this->Personnel->find(array('conditions' => $conditions));
+		$d['p'] = $this->Session->user('NOM');
 		if($this->Session->user('ROLE') == '1'){
-				$d['p'] = "Responsable administratif";
-			}elseif ($this->Session->user('ROLE') == '2') {
-				$d['p'] = "Vacataire";
-			}elseif ($this->Session->user('ROLE') == '3') {
-				$d['p'] = "Responsable financier";
-			}
+			$d['p'] = $this->Session->user('NOM');
+		}
 		$this->set($d);
 	}
 	/**
@@ -156,6 +161,5 @@ class PersonnelsController extends Controller{
 		$this->redirect('/'); 
 	}
 
-	
 
 }

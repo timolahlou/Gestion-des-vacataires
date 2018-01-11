@@ -36,6 +36,10 @@ class ContratsController extends Controller{
 
 		function ajouter($id = null)
 		{
+			if(!$this->Session->user('ROLE'))
+			{
+				$this->redirect('personnels/login');
+			}
 			$d['id'] = $id;
 			if($this->request->data){
 					$this->loadModel('Contrat');
@@ -75,6 +79,10 @@ class ContratsController extends Controller{
 
 		function delete($id)
 		{
+			if(!$this->Session->user('ROLE'))
+			{
+				$this->redirect('personnels/login');
+			}
 			$this->loadModel('Contrat');
 			$this->Contrat->delete($id);
 			$this->Session->setFlash('Le Contrat a bien été supprimé'); 

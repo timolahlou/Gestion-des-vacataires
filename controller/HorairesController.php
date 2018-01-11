@@ -23,13 +23,13 @@ class HorairesController extends Controller{
 		{
 			$conditions = array('Personnel.ID' => $this->Session->user('ID'));
 			$d['horaires'] = $this->Horaire->find(array(
-			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.ETATHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
+			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.ETATHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Personnel.EMAIL,Formation.LIBELLEFORMATION',
 			'conditions' => $conditions,
 			'join'       => array('Cours as Cour'=>'Cour.id=Horaire.ID_PLANIFIE', 'Personnels as Personnel' => 'Cour.ID_ENSEIGNE=Personnel.id','Formations as Formation' => 'Cour.ID_APPARTIENT=Formation.id'
 			)));
 		}else{
 			$d['horaires'] = $this->Horaire->find(array(
-			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.ETATHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Formation.LIBELLEFORMATION',
+			'fields'     => ' Horaire.ID,Horaire.DATEHORAIRE,Horaire.ETATHORAIRE,Horaire.DUREE,Horaire.SALLE,Cour.ID as idCours,Cour.LIBELLE,Cour.TYPE,Personnel.NOM,Personnel.EMAIL,Formation.LIBELLEFORMATION',
 			'join'       => array('Cours as Cour'=>'Cour.id=Horaire.ID_PLANIFIE', 'Personnels as Personnel' => 'Cour.ID_ENSEIGNE=Personnel.id','Formations as Formation' => 'Cour.ID_APPARTIENT=Formation.id'
 			)));
 		}
@@ -40,6 +40,10 @@ class HorairesController extends Controller{
 // fonction qui permet d'ajouter un horaire
 	function ajouter($id = null)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$d['id'] = $id;
 		if($this->request->data){
 				$this->loadModel('Horaire');
@@ -58,12 +62,33 @@ class HorairesController extends Controller{
 // fonction qui permet de supprimer les cours
 	function delete($id)
 	{
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
 		$this->loadModel('Horaire');
 		$this->Horaire->delete($id);
 		$this->Session->setFlash('horaire a bien été supprimé'); 
 		$this->redirect('horaires'); 
 	}
 
+	function valideCours($id){
+
+		if(!$this->Session->user('ROLE'))
+		{
+			$this->redirect('personnels/login');
+		}
+
+		$this->loadModel('Horaire');
+
+		$d = $this->Horaire->findFirst(array(
+			'conditions' => array('Horaire.ID' => $id)
+		));
+		$d->ETATHORAIRE = 1;
+		$this->Horaire->save($d);
+		$this->Session->setFlash('horaire a bien été validé');
+		$this->redirect('horaires'); 
+	}
 	// fonction qui permet de modifier un horaire
 
 	function edit($id){
