@@ -31,12 +31,11 @@ class DocumentsController extends Controller{
 					'ID_VALIDE_DOC' => $this->Session->user('ID')
 				));
 				$this->Session->setFlash("L'image a bien été uploadé");
+				$this->redirect('documents');
 			}else{
 				$this->Form->errors['file'] = "Le fichier n'est pas une image";
 			}
 		}
-		$this->layout = 'modal';
-		$d['images'] = $this->Document->find(); 
 		$d['p'] = $this->Session->user('NOM');;
 		$this->set($d); 
 	}

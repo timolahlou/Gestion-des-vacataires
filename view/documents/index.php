@@ -9,7 +9,7 @@
 	<div class="row">
 
         <div class="col-md-12">
-        <form class="form-inline">
+        <form class="form-inline" method="post" action="<?php echo Router::url('/documents/ajouterDocument'); ?>">
 		      <button type="submit" class="btn btn-primary">Ajouter un document</button>
 		    </form>
 		<br/>
@@ -37,7 +37,7 @@
     <td><a href="" download="<?php echo Router::webroot('images/'.$image->URL); ?>"><?php echo $image->URL;   ?></a></td>
     <td>
       <a href="#" onclick="FileBrowserDialogue.sendURL('<?php echo Router::webroot('images/'.$image->URL); ?>')">
-            <img src="<?php echo Router::webroot('images/'.$image->URL); ?>" width="300" height="150">
+            <img src="<?php echo Router::webroot('images/'.$image->URL); ?>" width="100" height="100">
           </a>
     </td>
 	<td><p data-placement="top" data-toggle="tooltip" title="Valider"><button class="btn btn-primary btn-xs" data-title="Valider" ><span class="glyphicon glyphicon-ok"></span></button></p></td>
