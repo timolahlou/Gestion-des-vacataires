@@ -7,7 +7,7 @@
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">
       <form method="post" action="<?php echo Router::url('virements'); ?>">
-		      <input class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="submit">
+		      <input value="Valider un autre virement" class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="submit">
     </form>
 		</div>
 	<div class="row">

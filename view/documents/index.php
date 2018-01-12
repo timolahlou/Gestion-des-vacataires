@@ -4,7 +4,6 @@
         include "../view/layout/head.php"; 
 } ?>
 
-
 	<div class="container">
 	<h1>Liste de documents</h1><br/>
 	<div class="row">
@@ -28,23 +27,30 @@
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Libelle document</th>
                     <th>URL</th>
-                     <th>Etat document</th>
+                     <th>Document</th>
                      <th>Valider</th>
-					 <th>Modifier</th>
+					            <th>Modifier</th>
                        <th>Supprimer</th>
                    </thead>
     <tbody>
 
     <tr>
+      <?php foreach ($images as $image) {?>
     <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td><a href="" download="file.pdf">Download file</a></td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+    <td><?php echo $image->LIBELLEDOCUMENT;   ?></td>
+    <td><a href="" download="<?php echo Router::webroot('images/'.$image->URL); ?>"><?php echo $image->URL;   ?></a></td>
+    <td>
+      <a href="#" onclick="FileBrowserDialogue.sendURL('<?php echo Router::webroot('images/'.$image->URL); ?>')">
+            <img src="<?php echo Router::webroot('images/'.$image->URL); ?>" width="300" height="150">
+          </a>
+    </td>
 	<td><p data-placement="top" data-toggle="tooltip" title="Valider"><button class="btn btn-primary btn-xs" data-title="Valider" ><span class="glyphicon glyphicon-ok"></span></button></p></td>
 	<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Supprimer"><button class="btn btn-danger btn-xs" data-title="Supprimer" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    <td>
+    <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('documents/delete/'.$image->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+  </td>
     </tr>
-
+    <?php  }   ?>
     </tbody>
 
 </table>

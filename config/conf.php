@@ -12,8 +12,6 @@ class Conf{
 			'password'	=> ''
 		)
 	);
-
-
 }
 
 Router::prefix('cockpit','admin');
@@ -35,8 +33,4 @@ Router::connect('listeVirements','virements/listeVirements');
 Router::connect('virements','virements/index');
 Router::connect('virments/ajouter','virements/ajouter');
 Router::connect('virments/ajouter2','virements/ajouter2');
-Router::connect('cockpit','cockpit/posts/index');
-Router::connect('page/:slug-:id','pages/view/id:([0-9]+)/slug:([a-z0-9\-]+)');
-Router::connect('blog/:slug-:id','posts/view/id:([0-9]+)/slug:([a-z0-9\-]+)');
-Router::connect('blog/category/:slug','posts/category/slug:([a-z0-9\-]+)');
-Router::connect('blog/*','posts/*');
+

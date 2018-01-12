@@ -9,25 +9,13 @@
 	<div class="row">
 
         <div class="col-md-3">
-        <form method="post" action="<?php echo Router::url('/documents/ajouterDocument'); ?>">
-		 
-		 <div class="form-group">
-			<select name="ID_DOC_COURS" class="selectpicker form-control " data-show-subtext="true" data-live-search="true">
-				<?php   foreach ($cours as $c) {  ?>
-                  <option value="<?php  echo $c->ID;   ?>"><?php  echo $c->LIBELLE;   ?></option>
-                <?php   }   ?>  
-            </select>
-				        </div>
-		  <div class="form-group">
-			<label for="libelle">Libelle document</label>
-			<input name="LIBELLEDOCUMENT" type="text" class="form-control" id="LIBELLEDOCUMENT" placeholder="Libelle">
-		  </div>
-		    <div class="form-group">
-				<label for="file">Document</label>
-				<input name="file" type="file" class="form-control-file" id="file">
-			</div>
-		  <button type="submit" class="btn btn-primary">Ajouter</button>
-		</form>
+       <form action="<?php echo Router::url('/documents/ajouterDocument'); ?>" method="post" enctype="multipart/form-data">
+		<?php echo $this->Form->input('file','Image',array('type'=>'file')); ?>
+		<?php echo $this->Form->input('name','Titre'); ?>
+		<div class="actions">
+			<input type="submit" value="Envoyer" class="btn primary">
+		</div>
+	   </form>
 		<br/>
 
         </div>

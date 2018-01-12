@@ -8,12 +8,12 @@
   <div class="row">
 
         <div class="col-md-12">
-          <h2 class="display-2" style="text-align:center;line-height:5em;" >Valider les virment les virments</h2>
+          <h2 class="display-2" style="text-align:center;line-height:5em;" >Valider les virments</h2>
 
 
 
               <form method="post" action="<?php echo Router::url('virments/ajouter'); ?>" class="form-inline"  style="line-height:6em;text-align:center">
-                <label for="doc_cours">Choisissez le vacataire que vous souhaiter le valider le virment : </label>
+                <label for="doc_cours">Choisissez le vacataire que vous souhaiter le valider le virement : </label>
                 <select name="idVacataire" class="selectpicker form-control " data-show-subtext="true" data-live-search="true" style=" margin-left: 1cm; width: 20em" >
                 	<?php   foreach ($horaires as $h) { ?>
                    <option value="<?php echo $h->idVacataire; ?>"><?php echo $h->NOM; ?></option>
@@ -30,7 +30,7 @@
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-						        <h4 class="modal-title custom_align" id="Heading">Valider virment</h4>
+						        <h4 class="modal-title custom_align" id="Heading">Valider virement</h4>
 						      </div>
 					          <div class="modal-body">
 		                  <form action="" method="post">

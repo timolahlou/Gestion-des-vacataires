@@ -26,7 +26,7 @@
   <div class="container">
   <div class="row">
         <div class="col-md-12">
-          <h2 class="display-2" style="text-align:center;line-height:5em;" >Valider le virment de flan</h2>
+          <h2 class="display-2" style="text-align:center;line-height:5em;" >Valider le virement de <?php echo $nomV;  ?></h2>
 		<div class="modal-dialog">
 			<form method="post" action="<?php echo Router::url('virments/ajouter2'); ?>">
 			  <div class="form-group">
@@ -46,7 +46,7 @@
                 </div>
 			  <div class="form-check">
 			  </div><br />
-			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="submit" value="" class="btn btn-primary">Valider</button>
 			</form>
 		</div>
 	</div>

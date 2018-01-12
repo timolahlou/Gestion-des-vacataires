@@ -100,10 +100,7 @@
 		</div>
 		<div class="form-group">
 			<div class='input-group date' id='datetimepicker1'>
-				<input type='text' name="Date" class="form-control" />
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-calendar"></span>
-				</span>
+				<input type='text' name="Date" class="form-control" placeholder="hhhhhh" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -153,7 +150,7 @@
 				<h4 class="modal-title custom_align" id="Heading">Ajouter un élément</h4>
 			  </div>
 			  <div class="modal-body">
-			  					<form action="<?php echo Router::url('horaires/ajouter'); ?>" method="post">
+			  	<form action="<?php echo Router::url('horaires/ajouter'); ?>" method="post">
 				<div class="form-group">
 					<select name="ID_PLANIFIE" class="form-control">
 						<?php  foreach ($cours as $c) { ?>
@@ -162,12 +159,9 @@
 					</select>
 				</div>
 				<div class="form-group">
-				<div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
+				 <div class="form-group">
+	                <input type='text' name="DATEHORAIRE" class="form-control" placeholder="YYYY-MM-DD HH:MM" />
+            	</div>
 				</div>
 				<div class="form-group">
 				<input class="form-control " name="DUREE" type="text" placeholder="Duree">
