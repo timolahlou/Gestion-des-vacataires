@@ -1,4 +1,4 @@
-<?php if ($p == "Vacataire") {
+<?php if ($this->Session->user('ROLE')=='2') {
         include "../view/layout/head-vacataire.php";
 }else{
         include "../view/layout/head.php"; 
@@ -37,7 +37,7 @@
     <td><a href="" download="<?php echo Router::webroot('images/'.$image->URL); ?>"><?php echo $image->URL;   ?></a></td>
     <td>
       <a href="#" onclick="FileBrowserDialogue.sendURL('<?php echo Router::webroot('images/'.$image->URL); ?>')">
-            <img src="<?php echo Router::webroot('images/'.$image->URL); ?>" width="100" height="100">
+            <img src="<?php echo Router::webroot('images/'.$image->URL); ?>" width="80" height="80">
           </a>
     </td>
 	<td><p data-placement="top" data-toggle="tooltip" title="Valider"><button class="btn btn-primary btn-xs" data-title="Valider" ><span class="glyphicon glyphicon-ok"></span></button></p></td>

@@ -1,5 +1,8 @@
-<?php  include "../view/layout/head.php";?>
-
+<?php if ($this->Session->user('ROLE')=='2') {
+        include "../view/layout/head-vacataire.php";
+}else{
+        include "../view/layout/head.php"; 
+} ?>
 <div class="form-group col-md-offset-1 ajouter">
 
           <div class="modal-header">

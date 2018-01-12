@@ -107,13 +107,8 @@ class PersonnelsController extends Controller{
 		$d['pers'] = $this->Personnel->findFirst(array(
 			'conditions'     => $conditions
 		));
-		if($this->Session->user('ROLE') == '1'){
-				$d['p'] = "Responsable administratif";
-			}elseif ($this->Session->user('ROLE') == '2') {
-				$d['p'] = "Vacataire";
-			}elseif ($this->Session->user('ROLE') == '3') {
-				$d['p'] = "Responsable financier";
-			}
+				$d['p'] = $this->Session->user('NOM');
+			
 		$d['id'] = $id; 
 		if($this->request->data){
 			$role = $this->request->data->ROLE;

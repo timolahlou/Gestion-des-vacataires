@@ -1,4 +1,4 @@
-<?php if ($p == "Vacataire") {
+<?php if ($this->Session->user('ROLE')=='2') {
         include "../view/layout/head-vacataire.php";
 }else{
         include "../view/layout/head.php"; 

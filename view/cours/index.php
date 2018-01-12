@@ -1,4 +1,4 @@
-<?php if ($p == "Vacataire") {
+<?php if ($this->Session->user('ROLE')=='2') {
         include "../view/layout/head-vacataire.php";
 }else{
         include "../view/layout/head.php"; 
@@ -7,7 +7,7 @@
 
 	<div class="container">
 		<div class="form-group col-md-offset-4 ajouter">
-	 <?php  if($p != "Vacataire"){ ?>   
+	  <?php  if($this->Session->user('ROLE') !='2'){ ?>  
 	<input class='btn btn-success' style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un cours" data-toggle="modal" data-target="#Ajouter_cours">
   <?php } ?>
 		</div>
@@ -26,8 +26,8 @@
                    <th>Libelle cours</th>
                     <th>Type de cours</th>
                     <th>Enseignat</th>
-                     <?php  if($p != "Vacataire"){ ?>
-                      <th>Modifier</th>
+ <?php  if($this->Session->user('ROLE') !='2'){ ?>
+                       <th>Modifier</th>
                        <th>Supprimer</th>
                         <?php  }  ?>
                    </thead>
@@ -38,15 +38,15 @@
     <td><?php echo $c->LIBELLE;  ?></td>
     <td><?php echo $c->TYPE;  ?></td>
     <td><?php echo $c->Ens;  ?></td>
-   <?php  if($p != "Vacataire"){ ?>    
-   
-   <?php  if($p != "Vacataire"){ ?>
-    </td>
+ <?php  if($this->Session->user('ROLE') !='2'){ ?>   
+ <?php  if($this->Session->user('ROLE') !='2'){ ?>
+     </td>
    <?php  }  ?>
  <td>
       <button class="btn btn-primary btn-xs" data-title="edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
    <!-- <td><button class="btn btn-danger btn-xs" data-title="delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     </tr>  -->
+
       <td>
               <a onclick="return confirm('Voulez vous vraiment supprimer ?'); " href="<?php echo Router::url('cours/delete/'.$c->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a>
               

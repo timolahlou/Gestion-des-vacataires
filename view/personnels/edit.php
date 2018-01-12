@@ -1,5 +1,8 @@
-<?php  include "../view/layout/head.php";  ?>
-
+<?php if ($this->Session->user('ROLE')=='2') {
+        include "../view/layout/head-vacataire.php";
+}else{
+        include "../view/layout/head.php"; 
+} ?>
 <div class="modal-body">
           <form action="<?php echo Router::url('personnels/edit/'.$id); ?>" method="post">
                 <div class="form-group">

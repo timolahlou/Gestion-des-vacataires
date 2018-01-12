@@ -1,4 +1,4 @@
-<?php if ($p == "Vacataire") {
+<?php if ($this->Session->user('ROLE')=='2') {
         include "../view/layout/head-vacataire.php";
 }else{
         include "../view/layout/head.php"; 
@@ -6,8 +6,7 @@
 	<div class="container">
 	<h1>Horaires de cours</h1>
 	<div class="form-group col-md-offset-4 ajouter">
-<?php  if($p != "Vacataire"){ ?>   
-<input class="btn btn-success" style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un horaire" data-toggle="modal" data-target="#add">
+ <?php  if($this->Session->user('ROLE') !='2'){ ?><input class="btn btn-success" style="width:30%; margin-top:5%; margin-left:12%;" type="button" value="Ajouter un horaire" data-toggle="modal" data-target="#add">
 <?php } ?>
 	</div>
 	<div class="row">
@@ -29,7 +28,7 @@
                      <th>Etat de cours</th>
                      <th>Enseignant</th>
                      <th>Formation</th>
-                     <?php  if($p != "Vacataire"){ ?>   
+                     <?php  if($this->Session->user('ROLE') !='2'){ ?>
                      <th>Modifier</th>
                        <th>Supprimer</th>
                         <?php  }  ?>
@@ -50,13 +49,13 @@
 			    	<span class="glyphicon glyphicon-ok"></span>
 			    	  <?php }else{  ?>
 
-			    		<a onclick="return confirm('Voulez-vous vraiment valider ce cours ?'); " href="<?php echo Router::url('horaires/valideCours/'.$h->ID); ?>"><span class="glyphicon glyphicon-remove"></span></a>
+			    		<a <?php  if($this->Session->user('ROLE') !='2'){ ?>  onclick="return confirm('Voulez-vous vraiment valider ce cours ?'); <?php }  ?> " href="<?php if($this->Session->user('ROLE') !='2'){ echo Router::url('horaires/valideCours/'.$h->ID);} ?>"><span class="glyphicon glyphicon-remove"></span></a>
 			    		<?php   } ?>
 
 			    </td>
 			    <td><?php  echo	$h->NOM   ?></td>
 			    <td><?php  echo	$h->LIBELLEFORMATION   ?></td>
-			    <?php  if($p != "Vacataire"){ ?>   
+			    <?php  if($this->Session->user('ROLE') !='2'){ ?>
 				<td><p data-placement="top" data-toggle="tooltip" title="Modifier"><button class="btn btn-primary btn-xs" data-title="Modifier" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 			    <td><a onclick="return confirm('Voulez-vous vraiment supprimer ?'); " href="<?php echo Router::url('horaires/delete/'.$h->ID); ?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 			    <?php  }  ?>

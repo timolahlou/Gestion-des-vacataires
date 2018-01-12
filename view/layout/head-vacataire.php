@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <ul class="nav navbar-nav">
       <li><a href="<?php echo Router::url('listeCours'); ?>">Mes Cours</a></li>
       <li><a href="<?php echo Router::url('horaires'); ?>">Mes Horaires</a></li>
-      <li><a href="<?php echo Router::url('horaires'); ?>">Mes Documents</a></li>
+      <li><a href="<?php echo Router::url('documents'); ?>">Mes Documents</a></li>
       <li><a href="<?php echo Router::url('horaires'); ?>">Mon Profile</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

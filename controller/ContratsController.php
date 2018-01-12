@@ -7,7 +7,7 @@ class ContratsController extends Controller{
 			if(!$this->Session->user('ROLE'))
 			{
 				$this->redirect('personnels/login');
-			}
+			}elseif ($this->Session->user('ROLE') == '3') {
 			$d['p'] = $this->Session->user('NOM');
 
 				$this->loadModel('Personnel');
@@ -30,8 +30,12 @@ class ContratsController extends Controller{
 					'join'       => array('Personnels as Personnel'=>'Personnel.id=Contrat.ID_SIGNE')
 					));
 				}
+			}else{
+				$this->redirect('/');
+			}
 				
 			$this->set($d);
+			
 		}
 
 		function ajouter($id = null)
@@ -39,7 +43,7 @@ class ContratsController extends Controller{
 			if(!$this->Session->user('ROLE'))
 			{
 				$this->redirect('personnels/login');
-			}
+			}elseif ($this->Session->user('ROLE') == '3') {
 			$d['id'] = $id;
 			if($this->request->data){
 					$this->loadModel('Contrat');
@@ -53,6 +57,9 @@ class ContratsController extends Controller{
 			}
 			$d['id'] = $id; 
 			$this->set($d);
+		}else{
+			$this->redirect('/');
+		}
 		}
 
 		function afficherContrat()
