@@ -10,12 +10,8 @@
 
         <div class="col-md-12">
         <form class="form-inline">
-		  <div class="form-group">
-			<label for="doc_cours">Filtrer les documents par cours/vacataire:</label>
-			  <input type="text" class="form-control" id="doc_cours" placeholder="Libelle ou Email">
-		  </div>
-		  <button type="submit" class="btn btn-primary">Filtrer</button>
-		  </form>
+		      <button type="submit" class="btn btn-primary">Ajouter un document</button>
+		    </form>
 		<br/>
 		
         <div class="table-responsive">

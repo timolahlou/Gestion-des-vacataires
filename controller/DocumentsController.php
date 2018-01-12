@@ -47,10 +47,14 @@ class DocumentsController extends Controller{
 		{
 			$this->redirect('personnels/login');
 		}
-		$this->loadModel('Cour');
-		$this->Cour->delete($id);
-		$this->Session->setFlash('Le Cours a bien été supprimé'); 
-		$this->redirect('listeCours'); 
+		$this->loadModel('Document');
+		$doc = $this->Document->findFirst(array(
+			'conditions' => array('id'=>$id)
+		));
+		unlink(WEBROOT.DS.'images'.DS.$doc->URL);
+		$this->Document->delete($id);
+		$this->Session->setFlash("Le Document a bien été supprimé");
+		$this->redirect('documents');
 	}
 
 
